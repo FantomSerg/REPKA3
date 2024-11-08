@@ -13,3 +13,7 @@ public class MainAddressBookController {
         return "Hello World";
     }
 }
+
+
+Error: Could not find or load main class org.example.addressbook.controller.AddressBoolController
+Caused by: java.lang.ClassNotFoundException: org.example.addressbook.controller.AddressBoolController
