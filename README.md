@@ -13,6 +13,4 @@ public class MainAddressBookController {
         return "Hello World";
     }
 }
-Error: Main method not found in class org.example.addressbook.controller.MainAddressBookController, please define the main method as:
-   public static void main(String[] args)
-or a JavaFX application class must extend javafx.application.Application
+java: class AddressBook is public, should be declared in a file named AddressBook.java
