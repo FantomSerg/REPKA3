@@ -6,15 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class MainAddressBookController {
+public static void main(String[] args)
+{ // Здесь вы можете запустить свой контроллер }
+class MainAddressBookController {
 
     @GetMapping("/test")
     public String getTest() {
         return "Hello World";
     }
-}
-
-
-public static void main(String[] args) {
-    // Здесь вы можете запустить свой контроллер
 }
