@@ -162,3 +162,12 @@ class AddressBookControllerTest {
         assertEquals(sizeBefore + 1, sizeAfter);
     }
 }
+
+
+
+
+
+
+
+INTO ADDRESS_BOOK
+VALUES (-2, 'Petr', 'Petrov', '+79111111111', '1990-01-01')
