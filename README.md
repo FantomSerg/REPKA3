@@ -174,3 +174,8 @@ VALUES (-1, 'Aleksey', 'Alekseev', '+79000000000', '1980-01-01')
     INSERT
 INTO ADDRESS_BOOK
 VALUES (-2, 'Petr', 'Petrov', '+79111111111', '1990-01-01')
+
+
+fanta@Ubuntu:~/Downloads/addressbook$ java -jar target/addressbook-0.0.1-SNAPSHOT.jar 
+Error: LinkageError occurred while loading main class org.springframework.boot.loader.launch.JarLauncher
+        java.lang.UnsupportedClassVersionError: org/springframework/boot/loader/launch/JarLauncher has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 55.0
