@@ -18,3 +18,18 @@ Caused by: org.apache.kafka.common.config.ConfigException: No resolvable bootstr
 	at org.apache.kafka.clients.admin.internals.AdminBootstrapAddresses.fromConfig(AdminBootstrapAddresses.java:72)
 	at org.apache.kafka.clients.admin.KafkaAdminClient.createInternal(KafkaAdminClient.java:510)
 	... 7 more
+
+
+
+
+[appuser@245b4cefbcbd ~]$ kafka-topics --list
+--bootstrap-server must be specified
+java.lang.IllegalArgumentException: --bootstrap-server must be specified
+
+
+
+
+[appuser@245b4cefbcbd ~]$ kafka-topics --create --topic test-mf --bootstrap-server 172.20.0.5:9091 --replication-factor 2 --partitions 1
+Error while executing topic command : Replication factor: 2 larger than available brokers: 1.
+[2024-11-22 22:45:59,274] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1.
+ (org.apache.kafka.tools.TopicCommand)
