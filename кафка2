@@ -78,12 +78,13 @@ services:
       - new-cluster-broker
     environment:
       MIRROR_MAKER_SOURCE_BOOTSTRAP_SERVERS: PLAINTEXT://broker-1:9091,PLAINTEXT://broker-2:9092,PLAINTEXT://new-cluster-broker:9095
-      MIRROR_MAKER_TARGET_BOOTSTRAP_SERVERS: PLAINTEXT://new-cluster:9096
+      MIRROR_MAKER_TARGET_BOOTSTRAP_SERVERS: PLAINTEXT://new-cluster:9095
       MIRROR_MAKER_OPTS: -whitelist=.*
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - kafka-net
+
 
 networks:
   kafka-net:
