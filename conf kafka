@@ -1,0 +1,98 @@
+services:
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - kafka-net
+
+  zookeeper-2:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 2
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_PEER_CONNECT: zookeeper-1:2181,zookeeper-2:2181
+    ports:
+      - "2182:2181"
+    networks:
+      - kafka-net
+
+  broker-1:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:2181,zookeeper-2:2181'
+      KAFKA_LISTENERS: PLAINTEXT://172.20.0.5:9091
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.20.0.5:9091
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_REPLICATION_FACTOR: 2
+    volumes:
+      - kafka-data:/kafka/data
+    ports:
+      - "9091:9091"
+    networks:
+      - kafka-net
+
+  broker-2:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:2181,zookeeper-2:2181'
+      KAFKA_LISTENERS: PLAINTEXT://172.20.0.6:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.20.0.6:9092
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_REPLICATION_FACTOR: 2
+    volumes:
+      - kafka-data:/kafka/data
+    ports:
+      - "9092:9092"
+    networks:
+      - kafka-net
+
+  new-cluster-broker:
+    image: confluentinc/cp-kafka:latest
+    environment:
+      KAFKA_BROKER_ID: 5
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:2181,zookeeper-2:2181'
+      KAFKA_LISTENERS: PLAINTEXT://172.20.0.7:9095
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.20.0.7:9095
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_REPLICATION_FACTOR: 3
+    ports:
+      - "9095:9095"
+    networks:
+      - kafka-net
+
+  mirror-maker:
+    image: openrelay/kafka-mirror-maker:latest
+    links:
+      - broker-1
+      - broker-2
+      - new-cluster-broker
+    environment:
+      MIRROR_MAKER_SOURCE_BOOTSTRAP_SERVERS: PLAINTEXT://172.20.0.5:9091,PLAINTEXT://172.20.0.6:9092,PLAINTEXT://172.20.0.7:9095
+      MIRROR_MAKER_TARGET_BOOTSTRAP_SERVERS: PLAINTEXT://172.20.0.7:9095
+      MIRROR_MAKER_OPTS: -whitelist=.*
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - kafka-net
+
+
+networks:
+  kafka-net:
+    driver: bridge
+volumes:
+  kafka-data:
+    driver: local
