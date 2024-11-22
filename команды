@@ -1,0 +1,1 @@
+kafka-topics --create --topic test-mf --bootstrap-server broker1:9092,broker2:9093 --replication-factor 2 --partitions 1
