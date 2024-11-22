@@ -1,1 +1,20 @@
 Error response from daemon: pull access denied for landoops/kafka-mirror-maker, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+
+[2024-11-22 22:00:25,569] WARN Couldn't resolve server broker1:9092 from bootstrap.servers as DNS resolution failed for broker1 (org.apache.kafka.clients.ClientUtils)
+Failed to create new KafkaAdminClient
+org.apache.kafka.common.KafkaException: Failed to create new KafkaAdminClient
+	at org.apache.kafka.clients.admin.KafkaAdminClient.createInternal(KafkaAdminClient.java:541)
+	at org.apache.kafka.clients.admin.KafkaAdminClient.createInternal(KafkaAdminClient.java:492)
+	at org.apache.kafka.clients.admin.Admin.create(Admin.java:137)
+	at org.apache.kafka.tools.TopicCommand$TopicService.createAdminClient(TopicCommand.java:437)
+	at org.apache.kafka.tools.TopicCommand$TopicService.<init>(TopicCommand.java:426)
+	at org.apache.kafka.tools.TopicCommand.execute(TopicCommand.java:98)
+	at org.apache.kafka.tools.TopicCommand.mainNoExit(TopicCommand.java:87)
+	at org.apache.kafka.tools.TopicCommand.main(TopicCommand.java:82)
+Caused by: org.apache.kafka.common.config.ConfigException: No resolvable bootstrap urls given in bootstrap.servers
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:103)
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:62)
+	at org.apache.kafka.clients.admin.internals.AdminBootstrapAddresses.fromConfig(AdminBootstrapAddresses.java:72)
+	at org.apache.kafka.clients.admin.KafkaAdminClient.createInternal(KafkaAdminClient.java:510)
+	... 7 more
