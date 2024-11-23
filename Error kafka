@@ -1,3 +1,31 @@
+[2024-11-23 16:16:34,025] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
+java.lang.RuntimeException: Received a fatal error while waiting for the SocketServer Acceptors to be started.
+	at kafka.server.KafkaServer.startup(KafkaServer.scala:639)
+	at kafka.Kafka$.main(Kafka.scala:112)
+	at kafka.Kafka.main(Kafka.scala)
+Caused by: java.util.concurrent.CompletionException: java.lang.RuntimeException: Unable to start acceptor for ListenerName(PLAINTEXT_HOST)
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.andTree(CompletableFuture.java:1527)
+	at java.base/java.util.concurrent.CompletableFuture.allOf(CompletableFuture.java:2419)
+	at kafka.network.SocketServer.enableRequestProcessing(SocketServer.scala:237)
+	at kafka.server.KafkaServer.startup(KafkaServer.scala:626)
+	... 2 more
+Caused by: java.lang.RuntimeException: Unable to start acceptor for ListenerName(PLAINTEXT_HOST)
+	at kafka.network.Acceptor.liftedTree1$1(SocketServer.scala:652)
+	at kafka.network.Acceptor.start(SocketServer.scala:632)
+	at kafka.network.SocketServer.$anonfun$enableRequestProcessing$2(SocketServer.scala:222)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenCompleteStage(CompletableFuture.java:887)
+	at java.base/java.util.concurrent.CompletableFuture.whenComplete(CompletableFuture.java:2325)
+	at kafka.network.SocketServer.chainAcceptorFuture$1(SocketServer.scala:215)
+	at kafka.network.SocketServer.$anonfun$enableRequestProcessing$5(SocketServer.scala:229)
+	at java.base/java.util.concurrent.ConcurrentHashMap$ValuesView.forEach(ConcurrentHashMap.java:4780)
+	at kafka.network.SocketServer.enableRequestProcessing(SocketServer.scala:229)
+	... 3 more
+Caused by: org.apache.kafka.common.KafkaException: Socket server failed to bind to host.docker.internal:29093: Unresolved address.
+
+=========================
+
 KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
 
 
