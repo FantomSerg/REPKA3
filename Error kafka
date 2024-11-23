@@ -1,3 +1,6 @@
+validating /home/fanta/Desktop/Kafka/docker-compose.yaml: services.networks Additional property kafka-net is not allowed
+
+
 [2024-11-23 16:16:34,025] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
 java.lang.RuntimeException: Received a fatal error while waiting for the SocketServer Acceptors to be started.
 	at kafka.server.KafkaServer.startup(KafkaServer.scala:639)
