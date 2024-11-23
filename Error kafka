@@ -1,3 +1,8 @@
+KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+
+
+
+
 Error response from daemon: pull access denied for landoops/kafka-mirror-maker, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 
 
