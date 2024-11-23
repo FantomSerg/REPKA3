@@ -36,3 +36,4 @@ Error while executing topic command : Replication factor: 2 larger than availabl
 
 
 services.ip_address must be a mapping
+validating /home/fanta/KF2/docker-compose.yaml: (root) Additional property ip_address is not allowed
