@@ -1,3 +1,11 @@
+[2024-11-23 22:41:02,974] WARN Session 0x0 for server zookeeper2/172.20.0.2:12181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+EndOfStreamException: Unable to read additional data from server sessionid 0x0, likely server has closed socket
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:77)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+fanta@Ubuntu:~/Desktop/Kafka$ 
+
+============================
 Running in Zookeeper mode...
 ===> Running preflight checks ... 
 ===> Check if /var/lib/kafka/data is writable ...
