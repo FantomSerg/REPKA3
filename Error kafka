@@ -1,3 +1,4 @@
+ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true
 [2024-11-23 22:40:58,958] INFO Opening socket connection to server zookeeper/172.20.0.4:2181. (org.apache.zookeeper.ClientCnxn)
 [2024-11-23 22:40:58,958] INFO SASL config status: Will not attempt to authenticate using SASL (unknown error) (org.apache.zookeeper.ClientCnxn)
 [2024-11-23 22:40:58,959] INFO Socket connection established, initiating session, client: /172.20.0.6:38924, server: zookeeper/172.20.0.4:2181 (org.apache.zookeeper.ClientCnxn)
