@@ -37,3 +37,7 @@ Error while executing topic command : Replication factor: 2 larger than availabl
 
 services.ip_address must be a mapping
 validating /home/fanta/KF2/docker-compose.yaml: (root) Additional property ip_address is not allowed
+
+
+ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
+java.lang.IllegalArgumentException: Error creating broker listeners from 'PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://host.docker.internal:29093': No security protocol defined for listener PLAINTEXT_HOST
