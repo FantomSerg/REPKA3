@@ -33,3 +33,6 @@ java.lang.IllegalArgumentException: --bootstrap-server must be specified
 Error while executing topic command : Replication factor: 2 larger than available brokers: 1.
 [2024-11-22 22:45:59,274] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1.
  (org.apache.kafka.tools.TopicCommand)
+
+
+services.ip_address must be a mapping
