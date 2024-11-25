@@ -1,0 +1,133 @@
+version: '3.10'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_PEER_PORT: 2888
+      ZOOKEEPER_LEADER_PORT: 3888
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVERS: "localhost:2888:3888;zookeeper:12888:13888;zookeeper2:22888:23888"
+      ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
+    networks:
+      - kafka-net
+
+  zookeeper2:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper2
+    container_name: zookeeper2
+    ports:
+      - "12181:12181"
+      - "12888:12888"
+      - "13888:13888"
+    environment:
+      ZOOKEEPER_SERVER_ID: 2
+      ZOOKEEPER_CLIENT_PORT: 12181
+      ZOOKEEPER_PEER_PORT: 12888
+      ZOOKEEPER_LEADER_PORT: 13888
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;localhost:12888:13888;zookeeper2:22888:23888"
+      ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
+
+    networks:
+      - kafka-net
+  zookeeper3:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper3
+    container_name: zookeeper3
+    ports:
+      - "22181:22181"
+      - "22888:22888"
+      - "23888:23888"
+    environment:
+      ZOOKEEPER_SERVER_ID: 3
+      ZOOKEEPER_CLIENT_PORT: 22181
+      ZOOKEEPER_PEER_PORT: 22888
+      ZOOKEEPER_LEADER_PORT: 23888
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;zookeeper2:12888:13888;localhost:22888:23888"
+      ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
+    networks:
+      - kafka-net
+
+  broker-111:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+      - zookeeper2
+      - zookeeper3
+    ports:
+      - 29092:29092
+    container_name: broker-111
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181,zookeeper2:12181,zookeeper3:22181"      
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker-111:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+    volumes:
+      - kafka-data:/kafka/data
+    networks:
+      - kafka-net
+
+  broker-222:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+      - zookeeper2
+      - zookeeper3
+    ports:
+      - 29093:29092
+    container_name: broker-222
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181,zookeeper2:12181,zookeeper3:22181" 
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker-222:29093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+    volumes:
+      - kafka-data:/kafka/data
+    networks:
+      - kafka-net
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    ports:
+      - 8090:8080
+    restart: always
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker-111:29092,broker-222:29093
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181, zookeeper2:12181, zookeeper3:22181
+    volumes:
+      - kafka-data:/kafka/data
+    links:
+      - broker-111
+      - broker-222
+      - zookeeper
+      - zookeeper2
+      - zookeeper3
+    networks:
+      - kafka-net
+networks:
+  kafka-net:
+    driver: bridge
+volumes:
+  kafka-data:
+    driver: local
