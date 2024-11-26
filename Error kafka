@@ -1,3 +1,17 @@
+2024-11-26 17:25:45 [2024-11-26 13:25:45,430] WARN Cannot open channel to 2 at election address localhost/127.0.0.1:13888 (org.apache.zookeeper.server.quorum.QuorumCnxManager)
+2024-11-26 17:25:45 java.net.ConnectException: Connection refused (Connection refused)
+2024-11-26 17:25:45     at java.net.PlainSocketImpl.socketConnect(Native Method)
+2024-11-26 17:25:45     at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+2024-11-26 17:25:45     at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+2024-11-26 17:25:45     at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+2024-11-26 17:25:45     at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+2024-11-26 17:25:45     at java.net.Socket.connect(Socket.java:589)
+2024-11-26 17:25:45     at org.apache.zookeeper.server.quorum.QuorumCnxManager.connectOne(QuorumCnxManager.java:650)
+2024-11-26 17:25:45     at org.apache.zookeeper.server.quorum.QuorumCnxManager.connectOne(QuorumCnxManager.java:707)
+2024-11-26 17:25:45     at org.apache.zookeeper.server.quorum.QuorumCnxManager.connectAll(QuorumCnxManager.java:735)
+2024-11-26 17:25:45     at org.apache.zookeeper.server.quorum.FastLeaderElection.lookForLeader(FastLeaderElection.java:910)
+2024-11-26 17:25:45     at org.apache.zookeeper.server.quorum.QuorumPeer.run(QuorumPeer.java:1247)
+====================================================
 2024-11-26 17:24:15 [2024-11-26 13:24:15,826] WARN Cannot open channel to 2 at election address localhost/127.0.0.1:13888 (org.apache.zookeeper.server.quorum.QuorumCnxManager)
 2024-11-26 17:24:15 java.net.ConnectException: Connection refused (Connection refused)
 =================================================
