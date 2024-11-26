@@ -1,3 +1,6 @@
+2024-11-26 17:24:15 [2024-11-26 13:24:15,826] WARN Cannot open channel to 2 at election address localhost/127.0.0.1:13888 (org.apache.zookeeper.server.quorum.QuorumCnxManager)
+2024-11-26 17:24:15 java.net.ConnectException: Connection refused (Connection refused)
+=================================================
 ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true
 [2024-11-23 22:40:58,958] INFO Opening socket connection to server zookeeper/172.20.0.4:2181. (org.apache.zookeeper.ClientCnxn)
 [2024-11-23 22:40:58,958] INFO SASL config status: Will not attempt to authenticate using SASL (unknown error) (org.apache.zookeeper.ClientCnxn)
