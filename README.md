@@ -1,3 +1,6 @@
+https://github.com/confluentinc/schema-registry-workshop/blob/master/docker-compose.yml
+
+
 package org.example.addressbook.repository;
 
 import org.example.addressbook.model.AddressBook;
