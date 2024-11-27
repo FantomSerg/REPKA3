@@ -1,3 +1,9 @@
+    volumes:
+      - /home/fanta/Documents/kafka-data:/var/lib/kafka/data
+
+validating /home/fanta/Desktop/Kafka/docker-compose.yaml: volumes Additional property /home/fanta/Documents/kafka-data is not allowed
+
+===========================================
 2024-11-26 17:25:45 [2024-11-26 13:25:45,430] WARN Cannot open channel to 2 at election address localhost/127.0.0.1:13888 (org.apache.zookeeper.server.quorum.QuorumCnxManager)
 2024-11-26 17:25:45 java.net.ConnectException: Connection refused (Connection refused)
 2024-11-26 17:25:45     at java.net.PlainSocketImpl.socketConnect(Native Method)
