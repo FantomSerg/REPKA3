@@ -1,4 +1,9 @@
-  zookeeper3:
+      - SERVER_SERVLET_CONTEXT_PATH = /kafkaui
+      - AUTH_TYPE = "LOGIN_FORM"
+      - SPRING_SECURITY_USER_NAME = Admin
+      - SPRING_SECURITY_USER_PASSWORD = 12345
+
+zookeeper3:
     image: confluentinc/cp-zookeeper:latest
     hostname: zookeeper3
     container_name: zookeeper3
