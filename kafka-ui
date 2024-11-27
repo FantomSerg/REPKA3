@@ -22,6 +22,6 @@ services:
       KAFKA_CLUSTERS_0_NAME: my-cluster
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker:9092
       # Другие параметры Kafka UI
-      security.auth.enabled: "true"
-      security.auth.login.username: admin
-      security.auth.login.password: password
+      KAFKA_UI_BASIC_AUTH_ENABLED: "true"
+      KAFKA_UI_USERNAME: admin
+      KAFKA_UI_PASSWORD: password
