@@ -1,4 +1,8 @@
-      - SERVER_SERVLET_CONTEXT_PATH = /kafkaui
+curl http://broker-111:29092
+curl: (6) Could not resolve host: broker-111
+
+===============
+- SERVER_SERVLET_CONTEXT_PATH = /kafkaui
       - AUTH_TYPE = "LOGIN_FORM"
       - SPRING_SECURITY_USER_NAME = Admin
       - SPRING_SECURITY_USER_PASSWORD = 12345
