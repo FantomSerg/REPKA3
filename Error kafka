@@ -2,6 +2,10 @@
       - /home/fanta/Documents/kafka-data:/var/lib/kafka/data
 
 validating /home/fanta/Desktop/Kafka/docker-compose.yaml: volumes Additional property /home/fanta/Documents/kafka-data is not allowed
+    volumes:
+      - type: bind
+        source: /home/fanta/Documents/kafka-data
+        target: /kafka/data
 
 ===========================================
 2024-11-26 17:25:45 [2024-11-26 13:25:45,430] WARN Cannot open channel to 2 at election address localhost/127.0.0.1:13888 (org.apache.zookeeper.server.quorum.QuorumCnxManager)
