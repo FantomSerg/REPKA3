@@ -16,7 +16,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ZOOKEEPER_INIT_LIMIT: 5
       ZOOKEEPER_SYNC_LIMIT: 2
-      ZOOKEEPER_SERVERS: "localhost:2888:3888;zookeeper:12888:13888;zookeeper2:22888:23888"
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;zookeeper2:12888:13888;zookeeper3:22888:23888"
       ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
     networks:
       - kafka-net
@@ -37,7 +37,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ZOOKEEPER_INIT_LIMIT: 5
       ZOOKEEPER_SYNC_LIMIT: 2
-      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;localhost:12888:13888;zookeeper2:22888:23888"
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;zookeeper2:12888:13888;zookeeper3:22888:23888"
       ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
 
     networks:
@@ -58,7 +58,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ZOOKEEPER_INIT_LIMIT: 5
       ZOOKEEPER_SYNC_LIMIT: 2
-      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;zookeeper2:12888:13888;localhost:22888:23888"
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888;zookeeper2:12888:13888;zookeeper3:22888:23888"
       ZOOKEEPER_QUORUM_LISTEN_ON_ALL_IPS: 'true'
     networks:
       - kafka-net
@@ -79,6 +79,9 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_SCHEMA_REGISTRY_URL: schemaregistry:8085
+      KAFKA_JMX_HOSTNAME: broker-111
+      KAFKA_JMX_PORT: 9991
     volumes:
       - kafka-data:/kafka/data
     networks:
@@ -100,10 +103,30 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_SCHEMA_REGISTRY_URL: schemaregistry:8085
+      KAFKA_JMX_HOSTNAME: broker-222
+      KAFKA_JMX_PORT: 9991
     volumes:
       - kafka-data:/kafka/data
     networks:
       - kafka-net
+
+  schemaregistry:
+    image: confluentinc/cp-schema-registry:5.1.2
+    depends_on:
+      - broker-111
+      - broker-222
+      - zookeeper
+      - zookeeper2
+      - zookeeper3
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181,zookeeper2:12181,zookeeper3:22181" 
+      SCHEMA_REGISTRY_HOST_NAME: schemaregistry
+      SCHEMA_REGISTRY_LISTENERS: "http://schemaregistry:8085"
+    ports:
+      - 8085:8085
+    networks:
+      - kafka-net        
 
   kafka-ui:
     image: provectuslabs/kafka-ui
@@ -123,6 +146,7 @@ services:
       - zookeeper
       - zookeeper2
       - zookeeper3
+      - schemaregistry
     networks:
       - kafka-net
 networks:
