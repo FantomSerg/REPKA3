@@ -1,3 +1,18 @@
+    image: provectuslabs/kafka-ui:<latest_version>  # Укажите последнюю стабильную версию
+    container_name: kafka-ui
+    ports:
+      - "8082:8080"  # Порт для доступа к Kafka UI
+    depends_on:
+      - broker-111
+      - broker-222
+    environment:
+      DYNAMIC_CONFIG_ENABLED: 'true'
+      KAFKA_CLUSTERS_0_NAME: 'local'
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 'PLAINTEXT://broker-111:29092,PLAINTEXT://broker-222:29093' 
+      KAFKA_CLUSTERS_0_SCHEMA_REGISTRY_URLS: 'http://schemaregistry:8081'  # URL для Schema Registry
+    networks:
+      - kafka-net
+============================
 024-12-02 11:58:29,782 ERROR [reactor-http-epoll-3] o.s.b.a.w.r.e.AbstractErrorWebExceptionHandler: [29d5eb15-25]  500 Server Error for HTTP GET "/api/clusters/local/schemas?page=1&perPage=25"
 org.springframework.web.reactive.function.client.WebClientRequestException: finishConnect(..) failed: Connection refused: schemaregistry/172.19.0.7:8085
         at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
