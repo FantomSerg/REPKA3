@@ -1,3 +1,7 @@
+
+500 Internal Server Error
+["http://localhost:8085"] is not a valid HTTP URL
+====================
 [2024-12-02 10:50:38,849] ERROR Server died unexpectedly:  (io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain)
 org.apache.kafka.common.config.ConfigException: No supported Kafka endpoints are configured. kafkastore.bootstrap.servers must have at least one endpoint matching kafkastore.security.protocol.
 SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://broker-111:29092,PLAINTEXT://broker-222:29093'
