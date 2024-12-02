@@ -1,4 +1,7 @@
+ec 02, 2024 11:03:23 AM org.glassfish.jersey.internal.inject.Providers checkProviderRuntime
+WARNING: A provider io.confluent.kafka.schemaregistry.rest.resources.ConfigResource registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider io.confluent.kafka.schemaregistry.rest.resources.ConfigResource will be ignored.
 
+===========================
 500 Internal Server Error
 ["http://localhost:8085"] is not a valid HTTP URL
 ====================
