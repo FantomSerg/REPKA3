@@ -1,3 +1,9 @@
+024-12-02 11:58:29,782 ERROR [reactor-http-epoll-3] o.s.b.a.w.r.e.AbstractErrorWebExceptionHandler: [29d5eb15-25]  500 Server Error for HTTP GET "/api/clusters/local/schemas?page=1&perPage=25"
+org.springframework.web.reactive.function.client.WebClientRequestException: finishConnect(..) failed: Connection refused: schemaregistry/172.19.0.7:8085
+        at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
+        Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException:
+
+==========================
 ec 02, 2024 11:03:23 AM org.glassfish.jersey.internal.inject.Providers checkProviderRuntime
 WARNING: A provider io.confluent.kafka.schemaregistry.rest.resources.ConfigResource registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider io.confluent.kafka.schemaregistry.rest.resources.ConfigResource will be ignored.
 
