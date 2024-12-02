@@ -1,5 +1,5 @@
 kafka-console-producer --broker-list <IP-адрес>:29092 --topic test
-
+ KAFKA_CREATE_USER: '{"username": "user", "password": "pass"}'
 url http://localhost:29092
 curl: (52) Empty reply from server
 
