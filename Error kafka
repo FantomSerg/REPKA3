@@ -1,4 +1,5 @@
-    image: provectuslabs/kafka-ui:<latest_version>  # Укажите последнюю стабильную версию
+KAFKA_CLUSTERS_0_SCHEMAREGISTRY_URL:
+image: provectuslabs/kafka-ui:<latest_version>  # Укажите последнюю стабильную версию
     container_name: kafka-ui
     ports:
       - "8082:8080"  # Порт для доступа к Kafka UI
