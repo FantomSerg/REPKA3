@@ -1,4 +1,7 @@
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker-222:29093,PLAINTEXT_HOST://172.20.0.5:9093
+cp: cannot stat '/data/jenkins/volume/workspace/middleves/vecom/kalmyk-services/kalmyk-app/ci-job/build/libs/*.jar': No such file or directory
+make: *** [/data/jenkins/volume/workspace/middleves/vecom/kalmyk-goodremains-services/kalmyk-app/ci-job/product/buildpack/Makefile:28: copy] Error 1
+
+KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker-222:29093,PLAINTEXT_HOST://172.20.0.5:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
 
