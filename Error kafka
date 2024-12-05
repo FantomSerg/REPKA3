@@ -1,3 +1,7 @@
+package:
+	gradle -PartifactoryUsername=${USER} -PartifactoryPassword=${PASSWORD} clean bootJar 
+
+==============
 cp: cannot stat '/data/jenkins/volume/workspace/middleves/vecom/kalmyk-services/kalmyk-app/ci-job/build/libs/*.jar': No such file or directory
 make: *** [/data/jenkins/volume/workspace/middleves/vecom/kalmyk-goodremains-services/kalmyk-app/ci-job/product/buildpack/Makefile:28: copy] Error 1
 
