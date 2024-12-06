@@ -1,3 +1,12 @@
+listeners=PLAINTEXT://:9092,SSL://:9093
+advertised.listeners=PLAINTEXT://your.kafka.broker.hostname:9092,SSL://your.kafka.broker.hostname:9093
+security.inter.broker.protocol=SSL
+ssl.keystore.location=/path/to/kafka.keystore.jks
+ssl.keystore.password=your_keystore_password
+ssl.truststore.location=/path/to/kafka.truststore.jks
+ssl.truststore.password=your_truststore_password
+
+
 Создайте keystore и самоподписанный сертификат:
 Выполните следующую команду для создания хранилища ключей (keystore) и генерации самоподписанного сертификата:
 bash
