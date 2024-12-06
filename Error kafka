@@ -1,3 +1,12 @@
+      KAFKA_SSL_KEYSTORE_FILENAME: "keystore.jks"
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: "kafka_cred"
+      KAFKA_SSL_KEY_CREDENTIALS: "/etc/kafka/secrets"
+      KAFKA_SSL_TRUSTSTORE_FILENAME: "keystore.jks"
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: "kafka_cred"
+
+    volumes:
+      - /home/fanta/Desktop/Kafka/ssl/secrets:/etc/kafka/secrets 
+=====================
 ===> User
 uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
 ===> Configuring ...
