@@ -1,3 +1,5 @@
+keytool -importcert -alias mykey -file certificate.crt -keystore kafka.truststore.jks -storepass
+=======================
 keytool -importkeystore \
   -srckeystore keystore.p12 \
   -srcstoretype PKCS12 \
