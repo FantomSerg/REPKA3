@@ -1,3 +1,6 @@
+ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
+org.apache.kafka.common.config.ConfigException: Invalid value javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target for configuration A client SSLEngine created with the provided settings can't connect to a server SSLEngine created with those settings.
+=============================
 [2024-12-06 18:33:02,360] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
 org.apache.kafka.common.config.ConfigException: Invalid value javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target for configuration A client SSLEngine created with the provided settings can't connect to a server SSLEngine created with those settings.
 =======================================================
