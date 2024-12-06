@@ -1,3 +1,6 @@
+ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
+org.apache.kafka.common.config.ConfigException: Invalid value javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target for configuration A client SSLEngine created with the provided settings can't connect to a server SSLEngine created with those settings.
+=================================
 keytool -exportcert -alias mykey -keystore kafka.keystore.jks -file certificate.crt -storepass qwe123
 Certificate stored in file <certificate.crt>
 
