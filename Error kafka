@@ -1,3 +1,6 @@
+keytool -importcert -alias mykey -file certificate.crt -keystore kafka.keystore.jks -storepass qwe123
+keytool error: java.lang.Exception: Certificate reply and certificate in keystore are identical
+==========================
 Could not open file or uri for loading private key from -inkey file from privatkey.key
 4017D006C37B0000:error:16000069:STORE routines:ossl_store_get0_loader_int:unregistered scheme:../crypto/store/store_register.c:237:scheme=file
 4017D006C37B0000:error:8000000D:system library:BIO_new_file:Permission denied:../crypto/bio/bss_file.c:67:calling fopen(privatkey.key, rb)
