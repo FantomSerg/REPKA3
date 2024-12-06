@@ -1,3 +1,5 @@
+https://github.com/confluentinc/confluent-platform-security-tools/blob/master/kafka-generate-ssl.sh
+================================
 https://inaword.ru/entrprise/kafka-chast-4-podgotovka-k-rabote-s-ssl/
 
 https://habr.com/ru/companies/nsd/articles/661007/
