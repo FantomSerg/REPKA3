@@ -1,3 +1,8 @@
+Could not open file or uri for loading private key from -inkey file from privatkey.key
+4017D006C37B0000:error:16000069:STORE routines:ossl_store_get0_loader_int:unregistered scheme:../crypto/store/store_register.c:237:scheme=file
+4017D006C37B0000:error:8000000D:system library:BIO_new_file:Permission denied:../crypto/bio/bss_file.c:67:calling fopen(privatkey.key, rb)
+4017D006C37B0000:error:10080002:BIO routines:BIO_new_file:system lib:../crypto/bio/bss_file.c:77:
+=================
 [2024-12-06 11:48:00,829] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
 org.apache.kafka.common.config.ConfigException: Invalid value javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target for configuration A client SSLEngine created with the provided settings can't connect to a server SSLEngine created with those settings.
 ================================
