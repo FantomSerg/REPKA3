@@ -15,6 +15,10 @@ keytool -exportcert -alias mykey -keystore kafka.keystore.jks -file certificate.
 bash
 keytool -importcert -alias mykey -file certificate.crt -keystore kafka.truststore.jks -storepass your_truststore_password
 
+Шаг 4: Импорт самоподписанного сертификата в Truststore
+Если вы хотите использовать самоподписанный сертификат, который вы создали ранее, выполните команду:
+bash
+keytool -importcert -alias mykey -file certificate.crt -keystore /path/to/your/truststore.jks -storepass your_truststore_password
 
 
 ==============================
