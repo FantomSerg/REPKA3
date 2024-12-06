@@ -5,7 +5,8 @@ keytool -genkeypair \
 -keypass qwe123 -keyalg RSA \
 -sigalg SHA256withRSA \
 -keystore secrets/kafka.jks
-
+====================================
+keytool -genkeypair -keysize 2048 -validity 356 -storepass qwe123 -alias kafka-test-keystore -storetype JKS -dname "CN=test-kafka.local, OU=DevLocal, L=Test, ST=Test, C=TSET" -keypass qwe123 -keyalg RSA -sigalg SHA256withRSA -keystore secrets/kafka.jks
 
 Создание JKS:
 keytool -genkeypair \
