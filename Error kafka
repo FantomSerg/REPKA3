@@ -1,3 +1,11 @@
+===> User
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+===> Configuring ...
+Running in Zookeeper mode...
+SSL is enabled.
+KAFKA_SSL_KEY_CREDENTIALS is required.
+Command [/usr/local/bin/dub ensure KAFKA_SSL_KEY_CREDENTIALS] FAILED !
+==============================
 package:
 	gradle -PartifactoryUsername=${USER} -PartifactoryPassword=${PASSWORD} clean bootJar 
 
