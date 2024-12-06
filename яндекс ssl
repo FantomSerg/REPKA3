@@ -1,0 +1,30 @@
+Для создания trustore и keystore вам потребуется выполнить следующие шаги:
+
+1. **Преобразование сертификатов**. Сначала преобразуйте ваши сертификаты (crt) и приватные ключи (privatekey) в формат, поддерживаемый Kafka. Обычно это файлы формата .jks или .p12. Используйте команду openssl для преобразования:
+```
+openssl pkcs12 -export -in certificate.crt -inkey privatekey.key -out keystore.p12
+```
+Здесь `certificate.crt` — ваш файл crt, а `privatekey.key` — файл с вашим приватным ключом. Замените их на реальные имена файлов.
+
+2. **Установка паролей**. При преобразовании вы можете установить пароль для вашего keystore. Это дополнительный уровень безопасности. Если вы не установили пароль при конвертации, вы всегда можете добавить его позже, используя следующую команду:
+```
+keytool -storepasswd -new new_password -keystore keystore.jks
+```
+Замените `new_password` на желаемый пароль и `keystore.jks` на имя вашего файла keystore.
+
+3. **Добавление сертификатов в truststore**. Если у вас есть дополнительные сертификаты, которые должны быть доверенными (например, CA-сертификаты), добавьте их в ваш truststore. Для этого используйте команду keytool:
+```
+keytool -import -file ca_certificate.crt -alias ca_alias -keystore truststore.jks
+```
+Здесь `ca_certificate.crt` – это файл сертификата CA, а `ca_alias` – псевдоним для этого сертификата в вашем truststore.
+
+4. **Настройка параметров Kafka**. После создания keystore и truststore настройте параметры KAFKA_SSL_* в вашем конфигурационном файле. Убедитесь, что пути к файлам указаны правильно. Например:
+```yaml
+KAFKA_SSL_KEYSTORE_LOCATION: /kafka/ssl/keystore.jks
+KAFKA_SSL_TRUSTSTORE_LOCATION: /kafka/ssl/truststore.jks
+KAFKA_SSL_KEY_PASSWORD: password
+KAFKA_SSL_CERTIFICATE_PASSWORD: password
+```
+5. **Перезапуск Kafka**. Перезапустите контейнер Kafka, чтобы применить новые настройки.
+
+6. **Проверка работы**. Проверьте, что Kafka теперь работает по протоколу SSL. Вы должны увидеть успешное рукопожатие SSL между клиентом и сервером.
