@@ -1,3 +1,23 @@
+Создайте keystore и самоподписанный сертификат:
+Выполните следующую команду для создания хранилища ключей (keystore) и генерации самоподписанного сертификата:
+bash
+keytool -genkeypair -alias mykey -keyalg RSA -keystore kafka.keystore.jks -storepass your_keystore_password -validity 365
+
+Шаг 2: Экспортируйте самоподписанный сертификат
+После создания keystore вам нужно экспортировать самоподписанный сертификат для использования в truststore.
+bash
+keytool -exportcert -alias mykey -keystore kafka.keystore.jks -file certificate.crt -storepass your_keystore_password
+
+Шаг 3: Создание Truststore
+Теперь вы можете создать truststore и импортировать в него самоподписанный сертификат.
+Создайте truststore:
+Импортируйте экспортированный сертификат в новый truststore:
+bash
+keytool -importcert -alias mykey -file certificate.crt -keystore kafka.truststore.jks -storepass your_truststore_password
+
+
+
+==============================
 keytool -importcert -alias mykey -file certificate.crt -keystore kafka.truststore.jks -storepass
 =======================
 keytool -importkeystore \
