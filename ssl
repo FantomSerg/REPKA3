@@ -16,3 +16,11 @@ keytool -genkeypair \
   -keypass mykeypassword \
   -dname "CN=localhost, OU=Dev, O=MyOrg, L=City, ST=State, C=Country" \
   -validity 365
+
+
+
+Use "keytool -?, -h, or --help" for this help message
+-keysize: команда не найдена
+Команда «-alias» не найдена. Возможно, вы имели в виду:
+  command '0alias' from deb 0install-core (2.16-2)
+Try: apt install <deb name>
