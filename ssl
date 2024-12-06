@@ -1,3 +1,11 @@
+keytool -importkeystore \
+  -srckeystore keystore.p12 \
+  -srcstoretype PKCS12 \
+  -destkeystore kafka.keystore.jks \
+  -deststoretype JKS \
+  -srcstorepass your_keystore_password \
+  -deststorepass your_keystore_password
+=================
 keytool -genkeypair \ 
 -keysize 2048 -validity 356 -storepass qwe123 \ 
 -alias kafka-test-keystore -storetype JKS \
