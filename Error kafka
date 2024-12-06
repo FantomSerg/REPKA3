@@ -1,3 +1,9 @@
+keytool -exportcert -alias mykey -keystore kafka.keystore.jks -file certificate.crt -storepass qwe123
+Certificate stored in file <certificate.crt>
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore kafka.keystore.jks -destkeystore kafka.keystore.jks -deststoretype pkcs12".
+==============================
 keytool -importcert -alias mykey -file certificate.crt -keystore kafka.keystore.jks -storepass qwe123
 keytool error: java.lang.Exception: Certificate reply and certificate in keystore are identical
 ==========================
