@@ -1,3 +1,5 @@
+https://habr.com/ru/companies/nsd/articles/661007/
+
 https://github.com/provectus/kafka-ui/blob/master/documentation/compose/kafka-ssl.yml
 =========================
 https://github.com/confluentinc/schema-registry-workshop/blob/master/docker-compose.yml
