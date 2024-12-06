@@ -5,3 +5,14 @@ keytool -genkeypair \
 -keypass qwe123 -keyalg RSA \
 -sigalg SHA256withRSA \
 -keystore secrets/kafka.jks
+
+
+Создание JKS:
+keytool -genkeypair \
+  -alias mykey \
+  -keyalg RSA \
+  -keystore keystore.jks \
+  -storepass mykeystorepassword \
+  -keypass mykeypassword \
+  -dname "CN=localhost, OU=Dev, O=MyOrg, L=City, ST=State, C=Country" \
+  -validity 365
