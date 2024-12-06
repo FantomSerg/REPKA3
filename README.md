@@ -1,3 +1,5 @@
+https://inaword.ru/entrprise/kafka-chast-4-podgotovka-k-rabote-s-ssl/
+
 https://habr.com/ru/companies/nsd/articles/661007/
 
 https://github.com/provectus/kafka-ui/blob/master/documentation/compose/kafka-ssl.yml
