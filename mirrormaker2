@@ -1,0 +1,26 @@
+# Определите псевдонимы кластеров
+clusters = source, target
+
+# Настройки для исходного кластера
+source.bootstrap.servers = <source_kafka_host>:<source_kafka_port>
+source.security.protocol = PLAINTEXT # или SSL, если используется
+# source.sasl.mechanism=PLAIN # если используется SASL
+# source.sasl.jaas.config=<replace with your JAAS config> # если используется SASL
+
+# Настройки для целевого кластера
+target.bootstrap.servers = <target_kafka_host>:<target_kafka_port>
+target.security.protocol = PLAINTEXT # или SSL, если используется
+# target.sasl.mechanism=PLAIN # если используется SASL
+# target.sasl.jaas.config=<replace with your JAAS config> # если используется SASL
+
+# Настройки репликации
+replication.factor=3
+checkpoints.topic.replication.factor=3
+heartbeats.topic.replication.factor=3
+offset-syncs.topic.replication.factor=3
+offset.storage.replication.factor=3
+status.storage.replication.factor=3
+config.storage.replication.factor=3
+
+# Дополнительные настройки (при необходимости)
+topics=.*
