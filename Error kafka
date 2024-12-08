@@ -1,3 +1,5 @@
+[2024-12-08 18:58:14,601] TRACE [Broker id=2] Received LeaderAndIsr request LeaderAndIsrPartitionState(topicName='__consumer_offsets', partitionIndex=6, controllerEpoch=6, leader=1, leaderEpoch=5, isr=[1], partitionEpoch=6, replicas=[2, 1], addingReplicas=[], removingReplicas=[], isNew=false, leaderRecoveryState=0) correlation id 3 from controller 1 epoch 6 (state.change.logger)
+error from daemon in stream: Error grabbing logs: invalid character '\x00' looking for beginning of value
 [2024-12-08 18:58:13,516] TRACE [Broker id=2] Handling LeaderAndIsr request correlationId 1 from controller 1 epoch 6 starting the become-follower transition for partition __consumer_offsets-3 with leader -1 (state.change.logger)
 
 ============================
