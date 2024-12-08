@@ -1,3 +1,6 @@
+[2024-12-08 18:53:24,058] ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
+java.lang.IllegalArgumentException: requirement failed: advertised.listeners cannot use the nonroutable meta-address 0.0.0.0. Use a routable IP address.
+=============================================================
 ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
 org.apache.kafka.common.config.ConfigException: Listener with name PLAINTEXT:// defined in inter.broker.listener.name not found in listener.security.protocol.map.
 ====================
