@@ -1,3 +1,6 @@
+[2024-12-08 18:58:13,516] TRACE [Broker id=2] Handling LeaderAndIsr request correlationId 1 from controller 1 epoch 6 starting the become-follower transition for partition __consumer_offsets-3 with leader -1 (state.change.logger)
+
+============================
 [2024-12-08 18:56:08,561] ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
 java.lang.IllegalArgumentException: Error creating broker listeners from 'PLAINTEXT://broker-111:29092,SSL:///172.20.0.6:9092': Unable to parse SSL:///172.20.0.6:9092 to a broker endpoint
 [2024-12-08 18:53:24,058] ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
