@@ -1,5 +1,6 @@
-[2024-12-08 18:58:13,915] INFO [Partition __consumer_offsets-39 broker=2] No checkpointed highwatermark is found for partition __consumer_offsets-39 (kafka.cluster.Partition)
-error from daemon in stream: Error grabbing logs: invalid character '\x00' looking for beginning of value
+[2024-12-09 08:02:05,203] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
+org.apache.zookeeper.KeeperException$NodeExistsException: KeeperErrorCode = NodeExists
+=========
 
 
 [2024-12-08 18:58:14,601] TRACE [Broker id=2] Received LeaderAndIsr request LeaderAndIsrPartitionState(topicName='__consumer_offsets', partitionIndex=6, controllerEpoch=6, leader=1, leaderEpoch=5, isr=[1], partitionEpoch=6, replicas=[2, 1], addingReplicas=[], removingReplicas=[], isNew=false, leaderRecoveryState=0) correlation id 3 from controller 1 epoch 6 (state.change.logger)
