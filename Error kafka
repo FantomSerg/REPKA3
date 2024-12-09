@@ -1,3 +1,5 @@
+- KAFKA_CLUSTERS_0_READONLY=false
+
 [2024-12-09 08:02:05,203] ERROR Exiting Kafka due to fatal exception during startup. (kafka.Kafka$)
 org.apache.zookeeper.KeeperException$NodeExistsException: KeeperErrorCode = NodeExists
 =========
