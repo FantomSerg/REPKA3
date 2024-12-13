@@ -1,3 +1,5 @@
+[2024-12-13 06:02:37,245] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Failed authentication with /172.21.0.1 (channelId=172.21.0.6:9092-172.21.0.1:12294-0) (SSL handshake failed) (org.apache.kafka.common.network.Selector)
+=========================================
 Can't use SSL_get_servername
 depth=0 C = RU, ST = Moscow, L = Moscow, O = Otus, OU = Kafka, CN = broker-111
 verify error:num=18:self-signed certificate
