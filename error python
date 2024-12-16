@@ -1,2 +1,8 @@
+ c:/Users/sergey.kalmykov/Documents/test_k.py
+Traceback (most recent call last):
+  File "c:/Users/sergey.kalmykov/Documents/test_k.py", line 1, in <module>
     from kafka import KafkaProducer
+ModuleNotFoundError: No module named 'kafka'
+============================
+from kafka import KafkaProducer
 ImportError: cannot import name 'KafkaProducer' from partially initialized module 'kafka' (most likely due to a circular import)
