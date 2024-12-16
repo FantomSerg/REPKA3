@@ -1,0 +1,13 @@
+from kafka import KafkaProducer
+
+# Настройки клиента
+producer = KafkaProducer(
+    bootstrap_servers=['localhost:9094'],  # Адрес брокера с SSL
+    security_protocol='SSL',
+    ssl_ca_cert='/path/to/ca.crt',  # Путь к CA-сертификату
+    ssl_certfile='/path/to/client.crt',  # Путь к сертификату клиента
+    ssl_keyfile='/path/to/client.key',  # Путь к ключу клиента
+)
+
+# Отправка сообщения
+producer.send('my_topic', value='Hello, World!')
