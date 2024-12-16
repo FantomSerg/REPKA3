@@ -1,0 +1,2 @@
+    from kafka import KafkaProducer
+ImportError: cannot import name 'KafkaProducer' from partially initialized module 'kafka' (most likely due to a circular import)
