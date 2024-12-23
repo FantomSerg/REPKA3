@@ -1,2 +1,6 @@
 RUN apk --no-cache add $PHPIZE_DEPS $DEV_DEPS zip libnsl libzip libpq libaio libxml2 libc6-compat libpng libjpeg-turbo libtool libgomp icu-libs jq freetype bash \
 ERROR: failed to solve: DeadlineExceeded: DeadlineExceeded: all-ext: failed to do request: Head
+ [internal] load metadata for docker.io/library/all-ext:latest
+
+    && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
