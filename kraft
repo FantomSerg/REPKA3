@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  kafka-controller-1:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-1
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENERS: 'CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'CONTROLLER://kafka-controller-1:9093'
+      KAFKA_PROCESS_ROLES: 'controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9093,3@kafka-controller-3:9093'
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: your_keystore_password
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: your_truststore_password
+    volumes:
+      - ./secrets:/etc/kafka/secrets
+    ports:
+      - "9093:9093"
+
+  kafka-controller-2:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-2
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_LISTENERS: 'CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'CONTROLLER://kafka-controller-2:9093'
+      KAFKA_PROCESS_ROLES: 'controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9093,3@kafka-controller-3:9093'
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: your_keystore_password
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: your_truststore_password
+    volumes:
+      - ./secrets:/etc/kafka/secrets
+    ports:
+      - "9094:9093"
+
+  kafka-controller-3:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-3
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_LISTENERS: 'CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'CONTROLLER://kafka-controller-3:9093'
+      KAFKA_PROCESS_ROLES: 'controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9093,3@kafka-controller-3:9093'
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: your_keystore_password
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: your_truststore_password
+    volumes:
+      - ./secrets:/etc/kafka/secrets
+    ports:
+      - "9095:9093"
+
+  kafka-broker:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-broker
+    environment:
+      KAFKA_BROKER_ID: 4
+      KAFKA_LISTENERS: 'BROWSER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'BROWSER://localhost:9092,CONTROLLER://kafka-broker:9093'
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9093,3@kafka-controller-3:9093'
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: your_keystore_password
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: your_truststore_password
+    volumes:
+      - ./secrets:/etc/kafka/secrets
+    ports:
+      - "9092:9092"
