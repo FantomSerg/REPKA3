@@ -1,4 +1,5 @@
 docker-compose exec kafka-controller-1 kafka-storage random-uuid
+KAFKA_KRAFT_CLUSTER_ID: L0ZEQh1yTbGhNNUE7-6wSQ
 
 version: '3.8'
 
