@@ -1,3 +1,6 @@
+fanta@Ubuntu:~/Desktop/kraft$ docker compose exec kafka-controller-1 kafka-storage random-uuid
+WARN[0000] /home/fanta/Desktop/kraft/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+service "kafka-controller-1" is not running
 docker-compose exec kafka-controller-1 kafka-storage random-uuid
 KAFKA_KRAFT_CLUSTER_ID: L0ZEQh1yTbGhNNUE7-6wSQ
 
