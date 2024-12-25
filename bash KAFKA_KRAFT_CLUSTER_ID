@@ -1,3 +1,5 @@
+docker run --rm -it --entrypoint /bin/kafka-storage confluentinc/cp-kafka:latest random-uuid
+=======================
 docker compose exec kafka-controller-1 kafka-storage random-uuid
 WARN[0000] /home/fanta/Desktop/kraft/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
 #!/bin/bash
