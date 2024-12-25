@@ -1,10 +1,14 @@
-Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: If process.roles contains the 'controller' role, 
-the node id 10 must be included in the set of voters controller.quorum.voters=Set(1, 2, 3) at scala.Predef$.require(Predef.scala:337) 
-at kafka.server.KafkaConfig.validateControllerQuorumVotersMustContainNodeIdForKRaftController$1(KafkaConfig.scala:2356) 
-at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:2413) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:2290)
+Running in KRaft mode...
+===> Running preflight checks ... 
+===> Check if /var/lib/kafka/data is writable ...
+===> Running in KRaft mode, skipping Zookeeper health check...
+===> Using provided cluster id fJenKkxqRCGwrLPYJNyQkA ...
+Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: The listeners config must only contain KRaft controller
+listeners from controller.listener.names when process.roles=controller at scala.Predef$.require(Predef.scala:337) 
+at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:2411) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:2290)
 at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:1638) at kafka.tools.StorageTool$.$anonfun$execute$1(StorageTool.scala:71) 
-at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:71) at kafka.tools.StorageTool$.main(StorageTool.scala:52)
-at kafka.tools.StorageTool.main(StorageTool.scala))
+at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:71) 
+at kafka.tools.StorageTool$.main(StorageTool.scala:52) at kafka.tools.StorageTool.main(StorageTool.scala)
 
 Running in Zookeeper mode...
 KAFKA_ZOOKEEPER_CONNECT is required.
