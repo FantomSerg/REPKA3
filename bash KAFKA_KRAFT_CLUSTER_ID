@@ -1,4 +1,6 @@
-KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: "PLAINTEXT"
+
+500 Internal Server Error
+finishConnect(..) failed: Connection refused: schema-registry/172.26.0.7:8081
 
 500 Internal Server Error
 Failed to resolve 'schemaregistry-new' [A(1)] after 2 queries
