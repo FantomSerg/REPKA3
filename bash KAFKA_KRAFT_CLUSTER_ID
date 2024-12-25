@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Генерация уникального идентификатора кластера
+CLUSTER_ID=$(kafka-storage random-uuid)
+
+# Установка переменной окружения
+echo "KAFKA_KRAFT_CLUSTER_ID=$CLUSTER_ID" >> /etc/kafka/secrets/.env
