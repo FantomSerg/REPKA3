@@ -1,13 +1,6 @@
-ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
-io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
-500 Internal Server Error
-finishConnect(..) failed: Connection refused: schema-registry/172.26.0.7:8081
-
-500 Internal Server Error
-Failed to resolve 'schemaregistry-new' [A(1)] after 2 queries
-[2024-12-25 11:45:31,671] ERROR Server died unexpectedly:  (io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain)
-io.confluent.common.config.ConfigException: Must configure at least one bootstrap connection method, either kafkastore.connection.url or kafkastore.bootstrap.servers
-===========================
+[2024-12-25 12:48:16,215] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
+io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: 
+Timed out waiting for join group to complete===========================
 
 kafka-broker:
     image: confluentinc/cp-kafka:latest
