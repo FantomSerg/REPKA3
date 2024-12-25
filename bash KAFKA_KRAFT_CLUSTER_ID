@@ -1,17 +1,5 @@
-===> Configuring ...
-Running in KRaft mode...
-===> Running preflight checks ... 
-===> Check if /var/lib/kafka/data is writable ...
-===> Running in KRaft mode, skipping Zookeeper health check...
-===> Using provided cluster id fJenKkxqRCGwrLPYJNyQkA ...
-Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: 
-The advertised.listeners config must not contain KRaft controller listeners from controller.listener.names when process.roles contains the broker role 
-because Kafka clients that send requests via advertised listeners do not send requests to KRaft controllers -- they only send requests to KRaft brokers. 
-at scala.Predef$.require(Predef.scala:337) at kafka.server.KafkaConfig.validateAdvertisedListenersDoesNotContainControllerListenersForKRaftBroker$1(KafkaConfig.scala:2352) 
-at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:2376) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:2290) 
-at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:1638) at kafka.tools.StorageTool$.$anonfun$execute$1(StorageTool.scala:71) 
-at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:71) at kafka.tools.StorageTool$.main(StorageTool.scala:52)
-at kafka.tools.StorageTool.main(StorageTool.scala)
+[2024-12-25 11:45:31,671] ERROR Server died unexpectedly:  (io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain)
+io.confluent.common.config.ConfigException: Must configure at least one bootstrap connection method, either kafkastore.connection.url or kafkastore.bootstrap.servers
 ===========================
 
 kafka-broker:
