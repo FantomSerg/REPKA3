@@ -1,8 +1,28 @@
-[reactor-http-epoll-2] o.s.b.a.w.r.e.AbstractErrorWebExceptionHandler: [7e647a70-26]  500 Server Error for HTTP GET "/api/clusters/KAFKA_CLUSTER/schemas/compatibility"
-org.springframework.web.reactive.function.client.WebClientRequestException: Failed to resolve 'schema-registry' [A(1)] after 2 queries 
-        at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
-        Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
-Error has been observed at the following site(s):
+
+  kafka-ui-NEW:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui-NEW
+    ports:
+      - 8090:8080
+    restart: always
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=KAFKA_CLUSTER
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-broker:29096,kafka-broker2:29097
+      - KAFKA_CLUSTERS_0_SCHEMA_REGISTRY=http://schema-registry:8089
+      - SERVER_SERVLET_CONTEXT_PATH = /kafkaui
+      # - AUTH_TYPE = "LOGIN_FORM"
+      # - SPRING_SECURITY_USER_NAME =Admin
+      # - SPRING_SECURITY_USER_PASSWORD =12345
+    volumes:
+      - kafka-data:/kafka/data
+    links:
+      - kafka-broker
+      - kafka-controller-1
+      - kafka-controller-2
+      - kafka-controller-3
+      - schema-registry
+    networks:
+      - kafka-net2
 
 ======================
 [2024-12-25 12:48:16,215] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
