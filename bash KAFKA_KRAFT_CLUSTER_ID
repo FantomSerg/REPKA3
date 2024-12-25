@@ -1,3 +1,9 @@
+===> Configuring ...
+Running in KRaft mode...
+KAFKA_ADVERTISED_LISTENERS is not supported on a KRaft controller.
+fanta@Ubuntu:~/Desktop/kraft$ 
+
+
 Running in Zookeeper mode...
 KAFKA_ZOOKEEPER_CONNECT is required.
 Command [/usr/local/bin/dub ensure KAFKA_ZOOKEEPER_CONNECT] FAILED !
