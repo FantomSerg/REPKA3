@@ -1,4 +1,6 @@
-
+[2024-12-25 14:22:06,761] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
+io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
+================
   kafka-ui-NEW:
     image: provectuslabs/kafka-ui
     container_name: kafka-ui-NEW
