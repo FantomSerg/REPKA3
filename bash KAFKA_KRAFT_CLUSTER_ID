@@ -1,3 +1,12 @@
+===> User
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+===> Configuring ...
+Running in KRaft mode...
+CLUSTER_ID is required.
+Command [/usr/local/bin/dub ensure CLUSTER_ID] FAILED !
+
+============================================
+
 docker run --rm -it --entrypoint /bin/kafka-storage confluentinc/cp-kafka:latest random-uuid
 =======================
 docker compose exec kafka-controller-1 kafka-storage random-uuid
