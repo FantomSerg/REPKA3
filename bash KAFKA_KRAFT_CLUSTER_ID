@@ -1,3 +1,17 @@
+RROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
+io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
+        at io.confluent.kafka.schemaregistry.storage.KafkaSchemaRegistry.init(KafkaSchemaRegistry.java:229)
+        at io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication.initSchemaRegistry(SchemaRegistryRestApplication.java:62)
+        at io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication.setupResources(SchemaRegistryRestApplication.java:73)
+        at io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication.setupResources(SchemaRegistryRestApplication.java:40)
+        at io.confluent.rest.Application.createServer(Application.java:201)
+        at io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain.main(SchemaRegistryMain.java:42)
+Caused by: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
+        at io.confluent.kafka.schemaregistry.masterelector.kafka.KafkaGroupMasterElector.init(KafkaGroupMasterElector.java:203)
+        at io.confluent.kafka.schemaregistry.storage.KafkaSchemaRegistry.init(KafkaSchemaRegistry.java:224)
+        ... 5 more
+
+======================
 [2024-12-25 12:48:16,215] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
 io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: 
 Timed out waiting for join group to complete===========================
