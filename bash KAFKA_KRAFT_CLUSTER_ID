@@ -1,4 +1,5 @@
-
+ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
+io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
 500 Internal Server Error
 finishConnect(..) failed: Connection refused: schema-registry/172.26.0.7:8081
 
