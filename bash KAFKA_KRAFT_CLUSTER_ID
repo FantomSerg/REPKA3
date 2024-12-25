@@ -1,3 +1,8 @@
+Running in Zookeeper mode...
+KAFKA_ZOOKEEPER_CONNECT is required.
+Command [/usr/local/bin/dub ensure KAFKA_ZOOKEEPER_CONNECT] FAILED !
+
+
 ===> User
 uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
 ===> Configuring ...
