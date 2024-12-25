@@ -1,3 +1,5 @@
+500 Internal Server Error
+Failed to resolve 'schemaregistry-new' [A(1)] after 2 queries
 [2024-12-25 11:45:31,671] ERROR Server died unexpectedly:  (io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain)
 io.confluent.common.config.ConfigException: Must configure at least one bootstrap connection method, either kafkastore.connection.url or kafkastore.bootstrap.servers
 ===========================
