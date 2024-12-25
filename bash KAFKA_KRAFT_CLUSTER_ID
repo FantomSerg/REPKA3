@@ -8,3 +8,4 @@ echo "KAFKA_KRAFT_CLUSTER_ID=$CLUSTER_ID" >> /etc/kafka/secrets/.env
 
 
 - ./generate_cluster_id.sh:/usr/local/bin/generate_cluster_id.sh
+    command: ["/usr/local/bin/generate_cluster_id.sh"]  # Запускаем скрипт при старте контейнера
