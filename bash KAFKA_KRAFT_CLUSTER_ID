@@ -1,4 +1,13 @@
-  kafka-broker:
+docker logs kafka-broker 
+===> User
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+===> Configuring ...
+Running in KRaft mode...
+KAFKA_ADVERTISED_LISTENERS is required.
+Command [/usr/local/bin/dub ensure KAFKA_ADVERTISED_LISTENERS] FAILED !
+===========================
+
+kafka-broker:
     image: confluentinc/cp-kafka:latest
     container_name: kafka-broker
     environment:
