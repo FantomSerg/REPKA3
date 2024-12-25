@@ -1,3 +1,5 @@
+'PLAINTEXT://localhost:9092,CONTROLLER://localhost:9096'
+
 docker logs kafka-broker 
 ===> User
 uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
