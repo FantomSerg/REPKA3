@@ -1,3 +1,6 @@
+      - SCHEMA_REGISTRY_KAFKA_BROKERS=PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9094
+      - SCHEMA_REGISTRY_KAFKA_BOOTSTRAP_SERVERS=broker-1:9092,broker-2:9094
+
 [2024-12-25 14:22:06,761] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
 io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
 ================
