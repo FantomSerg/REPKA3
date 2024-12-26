@@ -1,8 +1,4 @@
-[2024-12-26 10:16:58,207] WARN [Producer clientId=producer-1] Connection to node 5 (/172.26.0.2:29097) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
-
-[2024-12-25 14:22:06,761] ERROR Error starting the schema registry (io.confluent.kafka.schemaregistry.rest.SchemaRegistryRestApplication)
-io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryInitializationException: io.confluent.kafka.schemaregistry.exceptions.SchemaRegistryTimeoutException: Timed out waiting for join group to complete
-================
+[2024-12-26 10:27:54,621] WARN No value specified for metadata.encoder.secret, sensitive metadata will not be encoded (io.confluent.kafka.schemaregistry.storage.encoder.MetadataEncoderService)================
   kafka-ui-NEW:
     image: provectuslabs/kafka-ui
     container_name: kafka-ui-NEW
