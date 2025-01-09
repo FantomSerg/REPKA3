@@ -1,0 +1,202 @@
+services:
+  kafka-controller-1:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-1
+    environment:
+      KAFKA_KRAFT_MODE: "true"
+      KAFKA_BROKER_ID: 1
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_LISTENERS: 'PLAINTEXT://:9100,CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-controller-1:9100
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/server.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: /etc/kafka/secrets/creds
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/server.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: /etc/kafka/secrets/creds
+    volumes:
+      # - /home/fanta/Desktop/kraft/secretss/generate_cluster_id.sh:/usr/local/bin/generate_cluster_id.sh
+      - /home/fanta/Desktop/Kafka/secrets/creds:/etc/kafka/secrets/creds
+      - /home/fanta/Desktop/Kafka/secrets/server.keystore.jks:/etc/kafka/secrets/server.keystore.jks
+      - /home/fanta/Desktop/Kafka/secrets/server.truststore.jks://etc/kafka/secrets/server.truststore.jks
+    # command: ["/usr/local/bin/generate_cluster_id.sh"]  # Запускаем скрипт при старте контейнера
+    ports:
+      - "29093:29093"
+      - "9093:9093"
+      - "9100:9100"
+    networks:
+      - kafka-net2
+
+  kafka-controller-2:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-2
+    environment:
+      KAFKA_BROKER_ID: 2
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_LISTENERS: 'PLAINTEXT://:9099,CONTROLLER://0.0.0.0:9094'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-controller-2:9099
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/server.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: /etc/kafka/secrets/creds
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/server.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: /etc/kafka/secrets/creds
+    volumes:
+      - /home/fanta/Desktop/Kafka/secrets/creds:/etc/kafka/secrets/creds
+      - /home/fanta/Desktop/Kafka/secrets/server.keystore.jks:/etc/kafka/secrets/server.keystore.jks
+      - /home/fanta/Desktop/Kafka/secrets/server.truststore.jks://etc/kafka/secrets/server.truststore.jks
+    ports:
+      - "29094:29094"
+      - "9094:9094"
+      - "9099:9099"
+    networks:
+      - kafka-net2
+
+  kafka-controller-3:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-3
+    environment:
+      KAFKA_BROKER_ID: 3
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_LISTENERS: 'PLAINTEXT://:9098,CONTROLLER://0.0.0.0:9095'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-controller-3:9098
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/server.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: /etc/kafka/secrets/creds
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/server.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: /etc/kafka/secrets/creds
+    volumes:
+      - /home/fanta/Desktop/Kafka/secrets/creds:/etc/kafka/secrets/creds
+      - /home/fanta/Desktop/Kafka/secrets/server.keystore.jks:/etc/kafka/secrets/server.keystore.jks
+      - /home/fanta/Desktop/Kafka/secrets/server.truststore.jks://etc/kafka/secrets/server.truststore.jks
+    ports:
+      - "29095:29095"
+      - "9095:9095"
+      - "9098:9098"
+    networks:
+      - kafka-net2
+
+  kafka-broker:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-broker
+    environment:
+      KAFKA_BROKER_ID: 4
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29096
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker:29096
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+    #   KAFKA_SSL_KEYSTORE_FILENAME: server.keystore.jks
+    #   KAFKA_SSL_KEYSTORE_CREDENTIALS: creds
+    #   KAFKA_SSL_KEY_CREDENTIALS: creds
+    #   KAFKA_SSL_TRUSTSTORE_FILENAME: server.truststore.jks
+    #   KAFKA_SSL_TRUSTSTORE_CREDENTIALS: creds
+    #   KAFKA_SSL_CLIENT_AUTH: "required"
+    #   KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM:
+    #   ALLOW_PLAINTEXT_LISTENER: yes
+    # volumes:
+    #   - /home/fanta/Desktop/Kafka/secrets/creds:/etc/kafka/secrets/creds
+    #   - /home/fanta/Desktop/Kafka/secrets/server.keystore.jks:/etc/kafka/secrets/server.keystore.jks
+    #   - /home/fanta/Desktop/Kafka/secrets/server.truststore.jks://etc/kafka/secrets/server.truststore.jks
+    ports:
+      - "29096:29096"
+      - "9096:9096"
+    networks:
+      - kafka-net2
+
+  kafka-broker2:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-broker2
+    environment:
+      KAFKA_BROKER_ID: 5
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29097
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker2:29097
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+    #   KAFKA_SSL_KEYSTORE_FILENAME: server.keystore.jks
+    #   KAFKA_SSL_KEYSTORE_CREDENTIALS: creds
+    #   KAFKA_SSL_KEY_CREDENTIALS: creds
+    #   KAFKA_SSL_TRUSTSTORE_FILENAME: server.truststore.jks
+    #   KAFKA_SSL_TRUSTSTORE_CREDENTIALS: creds
+    #   KAFKA_SSL_CLIENT_AUTH: "required"
+    #   KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM:
+    #   ALLOW_PLAINTEXT_LISTENER: yes
+    # volumes:
+    #   - /home/fanta/Desktop/Kafka/secrets/creds:/etc/kafka/secrets/creds
+    #   - /home/fanta/Desktop/Kafka/secrets/server.keystore.jks:/etc/kafka/secrets/server.keystore.jks
+    #   - /home/fanta/Desktop/Kafka/secrets/server.truststore.jks://etc/kafka/secrets/server.truststore.jks
+    ports:
+      - "29097:29097"
+      - "9097:9097"
+    networks:
+      - kafka-net2      
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    container_name: schema-registry
+    depends_on:
+      - kafka-broker
+      - kafka-broker2
+      - kafka-controller-1
+      - kafka-controller-2
+      - kafka-controller-3
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: kafka-broker:29096,kafka-broker2:29097
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8089
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC: _schemas
+      SCHEMA_REGISTRY_HOST_HTTP_CONNECT_TIMEOUT_MS: 220000
+      SCHEMA_REGISTRY_HTTP_READ_TIMEOUT_MS: 220000
+    ports:
+      - "8089:8089"
+    networks:
+      - kafka-net2      
+
+  kafka-ui-NEW:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui-NEW
+    ports:
+      - 8091:8080
+    restart: always
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=KAFKA_CLUSTER
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-broker:29096,kafka-broker2:29097
+      - KAFKA_CLUSTERS_0_SCHEMA_REGISTRY=http://schema-registry:8089
+      - SERVER_SERVLET_CONTEXT_PATH = /kafkaui
+      # - AUTH_TYPE = "LOGIN_FORM"
+      # - SPRING_SECURITY_USER_NAME =Admin
+      # - SPRING_SECURITY_USER_PASSWORD =12345
+    # volumes:
+    #   - kafka-data:/kafka/data
+    links:
+      - kafka-broker
+      - kafka-controller-1
+      - kafka-controller-2
+      - kafka-controller-3
+      - schema-registry
+    networks:
+      - kafka-net2
+
+networks:
+  kafka-net2:
+    driver: bridge
+# volumes:
+#   kafka-data:
+#     driver: local
