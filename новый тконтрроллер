@@ -1,3 +1,7 @@
+[2025-01-10 07:18:11,709] ERROR Encountered fatal fault: caught exception (org.apache.kafka.server.fault.ProcessTerminatingFaultHandler)
+java.lang.IllegalStateException: Configured voter set: [1, 2, 3, 6] is different from the voter set read from the state file: [1, 2, 3]. Check if the quorum configuration is up to date, or wipe out the local state file if necessary
+
+
 ===> Using provided cluster id 36lcRazVRjuT7KOupA4l7Q ...
 Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: If process.roles contains the 'controller' role, the node id 8 must be included in the set of voters controller.quorum.voters=Set(1, 2, 3, 4) at scala.Predef$.require(Predef.scala:337) at kafka.server.KafkaConfig.validateControllerQuorumVotersMustContainNodeIdForKRaftController$1(KafkaConfig.scala:2356) at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:2421) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:2290) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:1638) at kafka.tools.StorageTool$.$anonfun$execute$1(StorageTool.scala:71) at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:71) at kafka.tools.StorageTool$.main(StorageTool.scala:52) at kafka.tools.StorageTool.main(StorageTool.scala)
 
