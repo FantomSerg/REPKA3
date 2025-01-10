@@ -1,3 +1,16 @@
+
+[2025-01-10 07:47:44,878] INFO [MetadataLoader id=6] initializeNewPublishers: the loader is still catching up because we still don't know the high water mark yet. (org.apache.kafka.image.loader.MetadataLoader)
+[2025-01-10 07:47:44,952] WARN [RaftManager id=6] Graceful shutdown timed out after 5000ms (org.apache.kafka.raft.KafkaRaftClient)
+[2025-01-10 07:47:44,954] ERROR [kafka-6-raft-io-thread]: Graceful shutdown of RaftClient failed (kafka.raft.KafkaRaftManager$RaftIoThread)
+java.util.concurrent.TimeoutException: Timeout expired before graceful shutdown completed
+        at org.apache.kafka.raft.KafkaRaftClient$GracefulShutdown.failWithTimeout(KafkaRaftClient.java:2495)
+        at org.apache.kafka.raft.KafkaRaftClient.maybeCompleteShutdown(KafkaRaftClient.java:2242)
+        at org.apache.kafka.raft.KafkaRaftClient.poll(KafkaRaftClient.java:2307)
+        at kafka.raft.KafkaRaftManager$RaftIoThread.doWork(RaftManager.scala:65)
+        at org.apache.kafka.server.util.ShutdownableThread.run(ShutdownableThread.java:135)
+
+=========================
+
 [2025-01-10 07:27:38,844] INFO [BrokerServer id=7] Transition from STARTING to STARTED (kafka.server.BrokerServer)
 [2025-01-10 07:27:38,847] ERROR [BrokerServer id=7] Fatal error during broker startup. Prepare to shutdown (kafka.server.BrokerServer)
 java.lang.RuntimeException: Received a fatal error while waiting for the controller to acknowledge that we are caught up
