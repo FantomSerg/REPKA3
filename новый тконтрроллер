@@ -1,3 +1,5 @@
+KAFKA_DEFAULT_REPLICATION_FACTOR. Например, если KAFKA_DEFAULT_REPLICATION_FACTOR установлен на 2, то KAFKA_MIN_INSYNC_REPLICAS может быть установлен на 1.
+
 [2025-01-10 08:02:48,892] INFO [BrokerLifecycleManager id=6] Unable to register the broker because the RPC got timed out before it could be sent. (kafka.server.BrokerLifecycleManager)
 [2025-01-10 08:02:48,938] INFO [RaftManager id=6] Election has timed out, backing off for 1000ms before becoming a candidate again (org.apache.kafka.raft.KafkaRaftClient)
 [2025-01-10 08:02:48,956] INFO [MetadataLoader id=6] initializeNewPublishers: the loader is still catching up because we still don't know the high water mark yet. (org.apache.kafka.image.loader.MetadataLoader)
