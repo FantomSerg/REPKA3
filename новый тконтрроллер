@@ -1,0 +1,43 @@
+services:
+  kafka-controller-4:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-controller-4
+    environment:
+      KAFKA_KRAFT_MODE: "true"
+      KAFKA_BROKER_ID: 4
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"  # Используйте тот же идентификатор кластера
+      KAFKA_LISTENERS: 'PLAINTEXT://:9102,CONTROLLER://0.0.0.0:9096'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-controller-4:9102
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095,4@kafka-controller-4:9096'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+    ports:
+      - "29096:29096"
+      - "9096:9096"
+    networks:
+      - kafka-net2
+
+  kafka-broker3:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka-broker3
+    environment:
+      KAFKA_BROKER_ID: 6  # Уникальный идентификатор для нового брокера
+      CLUSTER_ID: "fJenKkxqRCGwrLPYJNyQkA"
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29098
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker3:29098
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-controller-1:9093,2@kafka-controller-2:9094,3@kafka-controller-3:9095,4@kafka-controller-4:9096'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+    ports:
+      - "29098:29098"
+      - "9098:9098"
+    networks:
+      - kafka-net2
+
+networks:
+  kafka-net2:
+    driver: bridge
