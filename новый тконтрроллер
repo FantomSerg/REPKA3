@@ -1,3 +1,9 @@
+[2025-01-10 07:27:38,844] INFO [BrokerServer id=7] Transition from STARTING to STARTED (kafka.server.BrokerServer)
+[2025-01-10 07:27:38,847] ERROR [BrokerServer id=7] Fatal error during broker startup. Prepare to shutdown (kafka.server.BrokerServer)
+java.lang.RuntimeException: Received a fatal error while waiting for the controller to acknowledge that we are caught up
+
+
+
 [2025-01-10 07:18:11,709] ERROR Encountered fatal fault: caught exception (org.apache.kafka.server.fault.ProcessTerminatingFaultHandler)
 java.lang.IllegalStateException: Configured voter set: [1, 2, 3, 6] is different from the voter set read from the state file: [1, 2, 3]. Check if the quorum configuration is up to date, or wipe out the local state file if necessary
 
