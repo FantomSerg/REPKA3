@@ -1,13 +1,7 @@
+[2025-01-10 08:02:48,892] INFO [BrokerLifecycleManager id=6] Unable to register the broker because the RPC got timed out before it could be sent. (kafka.server.BrokerLifecycleManager)
+[2025-01-10 08:02:48,938] INFO [RaftManager id=6] Election has timed out, backing off for 1000ms before becoming a candidate again (org.apache.kafka.raft.KafkaRaftClient)
+[2025-01-10 08:02:48,956] INFO [MetadataLoader id=6] initializeNewPublishers: the loader is still catching up because we still don't know the high water mark yet. (org.apache.kafka.image.loader.MetadataLoader)
 
-[2025-01-10 07:47:44,878] INFO [MetadataLoader id=6] initializeNewPublishers: the loader is still catching up because we still don't know the high water mark yet. (org.apache.kafka.image.loader.MetadataLoader)
-[2025-01-10 07:47:44,952] WARN [RaftManager id=6] Graceful shutdown timed out after 5000ms (org.apache.kafka.raft.KafkaRaftClient)
-[2025-01-10 07:47:44,954] ERROR [kafka-6-raft-io-thread]: Graceful shutdown of RaftClient failed (kafka.raft.KafkaRaftManager$RaftIoThread)
-java.util.concurrent.TimeoutException: Timeout expired before graceful shutdown completed
-        at org.apache.kafka.raft.KafkaRaftClient$GracefulShutdown.failWithTimeout(KafkaRaftClient.java:2495)
-        at org.apache.kafka.raft.KafkaRaftClient.maybeCompleteShutdown(KafkaRaftClient.java:2242)
-        at org.apache.kafka.raft.KafkaRaftClient.poll(KafkaRaftClient.java:2307)
-        at kafka.raft.KafkaRaftManager$RaftIoThread.doWork(RaftManager.scala:65)
-        at org.apache.kafka.server.util.ShutdownableThread.run(ShutdownableThread.java:135)
 
 =========================
 
