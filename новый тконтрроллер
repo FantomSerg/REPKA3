@@ -1,3 +1,9 @@
+[2025-01-13 07:00:31,544] INFO [RaftManager id=5] Node 2 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-01-13 07:00:31,546] INFO [RaftManager id=5] Node 3 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-01-13 07:00:31,546] INFO [RaftManager id=5] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-01-13 07:00:49,052] INFO [NodeToControllerChannelManager id=5 name=directory-assignments] Node 6 disconnected. (org.apache.kafka.clients.NetworkClient)
+
+==============================
 ===> Configuring ...
 Running in KRaft mode...
 KAFKA_ADVERTISED_LISTENERS is not supported on a KRaft controller.
