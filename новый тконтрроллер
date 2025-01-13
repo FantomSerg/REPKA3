@@ -1,42 +1,29 @@
-[2025-01-13 07:00:31,544] INFO [RaftManager id=5] Node 2 disconnected. (org.apache.kafka.clients.NetworkClient)
-[2025-01-13 07:00:31,546] INFO [RaftManager id=5] Node 3 disconnected. (org.apache.kafka.clients.NetworkClient)
-[2025-01-13 07:00:31,546] INFO [RaftManager id=5] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)
-[2025-01-13 07:00:49,052] INFO [NodeToControllerChannelManager id=5 name=directory-assignments] Node 6 disconnected. (org.apache.kafka.clients.NetworkClient)
-
-==============================
-===> Configuring ...
-Running in KRaft mode...
-KAFKA_ADVERTISED_LISTENERS is not supported on a KRaft controller.
-
-
-
-[2025-01-10 11:42:58,275] WARN [ReplicaFetcher replicaId=6, leaderId=5, fetcherId=0] Error in response for fetch request (type=FetchRequest, replicaId=6,
-maxWait=500, minBytes=1, maxBytes=10485760, fetchData={twes-0=PartitionData(topicId=WfNzqWsKQ--XDLNNPMkUZA, fetchOffset=0, logStartOffset=0, maxBytes=1048576, 
-currentLeaderEpoch=Optional[0], lastFetchedEpoch=Optional.empty)}, isolationLevel=READ_UNCOMMITTED, removed=, replaced=,
-metadata=(sessionId=INVALID, epoch=INITIAL), rackId=) (kafka.server.ReplicaFetcherThread)
-java.io.IOException: Connection to kafka-broker2:29097 (id: 5 rack: null) failed.
-
-
-[2025-01-10 08:02:48,892] INFO [BrokerLifecycleManager id=6] Unable to register the broker because the RPC got timed out before it could be sent. (kafka.server.BrokerLifecycleManager)
-[2025-01-10 08:02:48,938] INFO [RaftManager id=6] Election has timed out, backing off for 1000ms before becoming a candidate again (org.apache.kafka.raft.KafkaRaftClient)
-[2025-01-10 08:02:48,956] INFO [MetadataLoader id=6] initializeNewPublishers: the loader is still catching up because we still don't know the high water mark yet. (org.apache.kafka.image.loader.MetadataLoader)
-
-
-=========================
-
-[2025-01-10 07:27:38,844] INFO [BrokerServer id=7] Transition from STARTING to STARTED (kafka.server.BrokerServer)
-[2025-01-10 07:27:38,847] ERROR [BrokerServer id=7] Fatal error during broker startup. Prepare to shutdown (kafka.server.BrokerServer)
-java.lang.RuntimeException: Received a fatal error while waiting for the controller to acknowledge that we are caught up
-
-
-
-[2025-01-10 07:18:11,709] ERROR Encountered fatal fault: caught exception (org.apache.kafka.server.fault.ProcessTerminatingFaultHandler)
-java.lang.IllegalStateException: Configured voter set: [1, 2, 3, 6] is different from the voter set read from the state file: [1, 2, 3]. Check if the quorum configuration is up to date, or wipe out the local state file if necessary
-
-
-===> Using provided cluster id 36lcRazVRjuT7KOupA4l7Q ...
-Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: If process.roles contains the 'controller' role, the node id 8 must be included in the set of voters controller.quorum.voters=Set(1, 2, 3, 4) at scala.Predef$.require(Predef.scala:337) at kafka.server.KafkaConfig.validateControllerQuorumVotersMustContainNodeIdForKRaftController$1(KafkaConfig.scala:2356) at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:2421) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:2290) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:1638) at kafka.tools.StorageTool$.$anonfun$execute$1(StorageTool.scala:71) at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:71) at kafka.tools.StorageTool$.main(StorageTool.scala:52) at kafka.tools.StorageTool.main(StorageTool.scala)
-
+kafka-connect:
+  image: confluentinc/cp-kafka-connect:7.4.4
+  container_name: kafka-connect
+  networks:
+    - kafka_network
+  depends_on:
+    - kafka
+  ports:
+    - "8083:8083"  # Порт для Kafka Connect REST API
+  restart: on-failure
+  environment:
+    CONNECT_BOOTSTRAP_SERVERS: kafka:9093  # Убедитесь, что используете SSL порт
+    CONNECT_REST_PORT: 8083
+    CONNECT_GROUP_ID: "kafka-connect-group"
+    CONNECT_CONFIG_STORAGE_TOPIC: "kafka-connect-configs"
+    CONNECT_OFFSET_STORAGE_TOPIC: "kafka-connect-offsets"
+    CONNECT_STATUS_STORAGE_TOPIC: "kafka-connect-statuses"
+    CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+    CONNECT_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+    
+    # Настройки SSL
+    CONNECT_SECURITY_PROTOCOL: "SSL"
+    CONNECT_SSL_KEYSTORE_LOCATION: "/etc/kafka/secrets/kafka.keystore.jks"
+    CONNECT_SSL_KEYSTORE_PASSWORD: "your_keystore_password"
+    CONNECT_SSL_TRUSTSTORE_LOCATION: "/etc/kafka/secrets/kafka.truststore.jks"
+    CONNECT_SSL_TRUSTSTORE_PASSWORD: "your_truststore_password"
 services:
   kafka-controller-4:
     image: confluentinc/cp-kafka:latest
