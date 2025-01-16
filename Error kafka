@@ -1,3 +1,4 @@
+curl -v -x http://ser-technicak-proxy.kamyk.ru:4522 https://api.yandex.net
 You need to install \"jmespath\" prior to running json_query filter
 
 
