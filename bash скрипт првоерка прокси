@@ -46,3 +46,30 @@ while IFS= read -r url; do
 done < "$ADDRESS_FILE"
 
 echo "Результаты запросов записаны в файл $OUTPUT_FILE."
+
+
+#!/bin/bash
+
+# Укажите файл со списком адресов
+ADDRESS_FILE="addresses.txt"
+
+# Укажите прокси-сервер
+PROXY="http://ser-technicak-proxy.kamyk.ru:4522"
+
+# Укажите файл для записи вывода
+OUTPUT_FILE="curl_output.txt"
+
+# Очистка файла перед записью
+> "$OUTPUT_FILE"
+
+# Выполнение команды curl для каждого адреса
+while IFS= read -r url; do
+    {
+        echo "Проверяемый адрес: $url"
+        curl -v -x "$PROXY" "$url"
+        echo "----------------------------------------"
+    } >> "$OUTPUT_FILE"
+done < "$ADDRESS_FILE"
+
+echo "Результаты запросов записаны в файл $OUTPUT_FILE."
+
