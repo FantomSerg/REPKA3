@@ -1,3 +1,6 @@
+You need to install \"jmespath\" prior to running json_query filter
+
+
 Warning: Identity file /data/im-user/.ssh/pk not accessible: No such file or directory.
 Authorized uses only. All activity may be monitored and reported.
 Use your AD login on this server (Quest VAS)
