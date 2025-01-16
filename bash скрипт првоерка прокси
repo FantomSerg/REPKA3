@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Укажите адрес, который необходимо проверить
+URL="https://api.yandex.net"
+
+# Укажите прокси-сервер
+PROXY="http://ser-technicak-proxy.kamyk.ru:4522"
+
+# Укажите файл для записи вывода
+OUTPUT_FILE="curl_output.txt"
+
+# Выполнение команды curl с прокси и запись вывода в файл
+echo "Выполняется запрос к $URL через прокси $PROXY..."
+curl -v -x "$PROXY" "$URL" &> "$OUTPUT_FILE"
+
+echo "Результат запроса записан в файл $OUTPUT_FILE."
