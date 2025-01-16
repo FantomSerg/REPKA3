@@ -14,3 +14,35 @@ echo "Выполняется запрос к $URL через прокси $PROXY
 curl -v -x "$PROXY" "$URL" &> "$OUTPUT_FILE"
 
 echo "Результат запроса записан в файл $OUTPUT_FILE."
+
+
+
+
+#!/bin/bash
+
+# Укажите файл со списком адресов
+ADDRESS_FILE="addresses.txt"
+
+# Укажите прокси-сервер
+PROXY="http://ser-technicak-proxy.kamyk.ru:4522"
+
+# Укажите файл для записи вывода
+OUTPUT_FILE="curl_output.txt"
+
+# Очистка файла перед записью
+> "$OUTPUT_FILE"
+
+# Проверка доступности каждого адреса
+while IFS= read -r url; do
+    echo "Выполняется запрос к: $url"
+    
+    # Выполнение команды curl с прокси и запись вывода в файл
+    {
+        echo "Проверяемый адрес: $url"
+        curl -v -x "$PROXY" "$url"
+        echo "----------------------------------------"
+    } >> "$OUTPUT_FILE"
+
+done < "$ADDRESS_FILE"
+
+echo "Результаты запросов записаны в файл $OUTPUT_FILE."
