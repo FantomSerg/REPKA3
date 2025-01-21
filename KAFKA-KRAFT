@@ -1,6 +1,7 @@
-
-docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/bin/kafka-storage": stat /bin/kafka-storage: no such file or directory: unknown.
-
+===> Configuring ...
+Running in KRaft mode...
+===> Launching ...
+===> Using provided cluster id 5L6g3nShT-eMCtK--X86sw 
 
 docker run --rm -it --entrypoint /bin/kafka-storage confluentinc/cp-kafka:latest random-uuid
 services:
