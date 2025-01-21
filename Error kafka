@@ -1,3 +1,8 @@
+fatal: [kalm-kalm1 -> 127.0.0.1]: FAILED! => {"msg": "The conditional check '{{ sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query) 
+}}|length == 0' failed. The error was: Conditional is marked as unsafe, and cannot be evaluated.\n\nThe error appears to be in 
+'/home/sko/ansible/init_server.yml': line 166, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.
+\n\nThe offending line appears to be:\n\n\n    - name: Add account to SEC\n      ^ here\n"}
+
 curl -v -x http://ser-technicak-proxy.kamyk.ru:4522 https://api.yandex.net
 You need to install \"jmespath\" prior to running json_query filter
 
