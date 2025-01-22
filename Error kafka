@@ -1,8 +1,9 @@
  FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
  | default([]) | length == 0' failed. The error was: template error while templating string: unexpected '}', expected ')'.
  String: {% if (sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query) | default([]) | length == 0 %}
- True {% else %} False {% endif %}. unexpected '}', expected ')'\n\nThe error appears to be in '/home/skalmyko/ansible/init_server_mf_DMZ.yml':
- line 166, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: Add account to sec\n      ^ here\n"}
+ True {% else %} False {% endif %}. unexpected '}', expected ')'\n\nThe error appears to be in '/home/user/ansible/init_Z.yml':
+ line 166, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n   
+- name: Add account to sec\n      ^ here\n"}
 
 curl -v -x http://ser-technicak-proxy.kamyk.ru:4522 https://api.yandex.net
 You need to install \"jmespath\" prior to running json_query filter
