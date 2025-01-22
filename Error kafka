@@ -1,4 +1,9 @@
- FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
+FAILED! => {"msg": "Invalid data passed to 'loop', it requires a list, got this instead: (sec_accounts_exist.json.searchResults|json_query
+(sec_accounts_exist_query)). Hint: 
+If you passed a list/dict of just one element, try adding wantlist=True to your lookup invocation or use q/query instead of lookup."}
+
+
+FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
  | default([]) | length == 0' failed. The error was: template error while templating string: unexpected '}', expected ')'.
  String: {% if (sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query) | default([]) | length == 0 %}
  True {% else %} False {% endif %}. unexpected '}', expected ')'\n\nThe error appears to be in '/home/user/ansible/init_Z.yml':
