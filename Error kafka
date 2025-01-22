@@ -1,6 +1,5 @@
-FAILED! => {"msg": "Invalid data passed to 'loop', it requires a list, got this instead: (sec_accounts_exist.json.searchResults|json_query
-(sec_accounts_exist_query)). Hint: 
-If you passed a list/dict of just one element, try adding wantlist=True to your lookup invocation or use q/query instead of lookup."}
+    environment:
+      - PHP_FPM_SOCKET=tcp://branch-resolver_fpm:9023232/status
 
 
 FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
