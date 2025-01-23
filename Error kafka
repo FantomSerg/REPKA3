@@ -1,4 +1,5 @@
 echo "Hello Kafka" | docker-compose exec -T kafka kafka-console-producer --broker-list localhost:9092 --topic test-topic
+OCI runtime exec failed: exec failed: unable to start container process: exec: "kafka-console-producer": executable file not found in $PATH: unknown
 
 curl -v -x http://ser-technicak-proxy.kamyk.ru:4522 https://api.yandex.net
 You need to install \"jmespath\" prior to running json_query filter
