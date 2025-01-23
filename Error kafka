@@ -1,18 +1,8 @@
-stages:
-    - test
-    - build
-    - security
-    - deploy
-    - notify
+Running in KRaft mode...
+===> Launching ...
+===> Using provided cluster id 5L6g3nShT-eMCtK--X86sw ...
+Exception in thread "main" java.lang.IllegalArgumentException: requirement failed: advertised.listeners cannot use the nonroutable meta-address 0.0.0.0. Use a routable IP address. at scala.Predef$.require(Predef.scala:337) at kafka.server.KafkaConfig.validateValues(KafkaConfig.scala:1022) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:852) at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:184) at kafka.tools.StorageTool$.$anonfun$execute$1(StorageTool.scala:79) at scala.Option.flatMap(Option.scala:283) at kafka.tools.StorageTool$.execute(StorageTool.scala:79) at kafka.tools.StorageTool$.main(StorageTool.scala:46) at kafka.docker.KafkaDockerWrapper$.main(KafkaDockerWrapper.scala:48) at kafka.docker.KafkaDockerWrapper.main(KafkaDockerWrapper.scala)
 
-include:
-  - project: 'online-store/infrastructure/cicd-pipelines'
-    ref: master
-    file:
-      - /Infrastructure/test/build/${CI_PROJECT_NAME}.yml
-      - /Infrastructure/test/deploy/${CI_PROJECT_NAME}.yml
-      - telegram_notify_s.yml
-      - telegram_notify_e.yml
 
 
 
