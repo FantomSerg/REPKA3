@@ -1,5 +1,6 @@
-Formatting metadata directory /var/lib/kafka/data with metadata.version 3.9-IV0. Error while writing meta.properties file /var/lib/kafka/data: java.nio.file.AccessDeniedException: /var/lib/kafka/data/bootstrap.checkpoint.tmp
 
+[2025-01-23 11:36:42,944] ERROR Unable to start acceptor for ListenerName(CONTROLLER) (kafka.network.DataPlaneAcceptor)
+org.apache.kafka.common.KafkaException: Socket server failed to bind to 10.201.39.71:9094: Address not available.
 
 FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
  | default([]) | length == 0' failed. The error was: template error while templating string: unexpected '}', expected ')'.
