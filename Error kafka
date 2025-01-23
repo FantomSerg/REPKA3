@@ -1,5 +1,19 @@
-    environment:
-      - PHP_FPM_SOCKET=tcp://branch-resolver_fpm:9023232/status
+stages:
+    - test
+    - build
+    - security
+    - deploy
+    - notify
+
+include:
+  - project: 'online-store/infrastructure/cicd-pipelines'
+    ref: master
+    file:
+      - /Infrastructure/test/build/${CI_PROJECT_NAME}.yml
+      - /Infrastructure/test/deploy/${CI_PROJECT_NAME}.yml
+      - telegram_notify_s.yml
+      - telegram_notify_e.yml
+
 
 
 FAILED! => {"msg": "The conditional check '(sec_accounts_exist.json.searchResults|json_query(sec_accounts_exist_query)
