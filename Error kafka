@@ -1,5 +1,6 @@
-Pipeline cannot be run.
-jobs copy to vlg-im-smsgw01 config should implement the script:, run:, or trigger: keyword
+    - curl --location --request GET "https://ser.kalmyk.ru/sc-ui/rest/password?comment=
+	$CI_COMMIT_SHORT_SHA&token=$SEC_TOKEN&apAccountPath=$SEC_PATH&pmAccountName=$SEC_NAME_PRIVATE_KEY" | jq -r '."ssh-key"' > $PRIVATE_KEY
+
 
 Traceback (most recent call last):
   File "<string>", line 1, in <module>
