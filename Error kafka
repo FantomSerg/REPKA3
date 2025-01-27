@@ -1,5 +1,6 @@
-    - curl --location --request GET "https://ser.kalmyk.ru/sc-ui/rest/password?comment=
-	$CI_COMMIT_SHORT_SHA&token=$SEC_TOKEN&apAccountPath=$SEC_PATH&pmAccountName=$SEC_NAME_PRIVATE_KEY" | jq -r '."ssh-key"' > $PRIVATE_KEY
+url: https://sec.kalmyk.ru/sc-ui/rest/pm/password?comment=get_for_create_key_{{ hostname }}&token=
+{{ sec_token }}&secAccountPath={{ sec_cred_path }}&secAccountName={{ sec_cred_account_name }}
+
 
 
 Traceback (most recent call last):
