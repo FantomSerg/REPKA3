@@ -1,5 +1,14 @@
 Error opening zip file or JAR manifest missing : /data/user/services/jmx_prometheus_javaagent-1.0.1.jar Error occurred during initialization of VM agent library failed Agent_OnLoad: instrument
+rules:
+  - pattern: "kafka.controller<type=(.+), name=(.+)><>"
+    name: "kafka_controller_$1_$2"
+    labels:
+      instance: "controller"
 
+  - pattern: "kafka.server<type=(.+), name=(.+)><>"
+    name: "kafka_server_$1_$2"
+    labels:
+      instance: "broker"
 Error opening zip file or JAR manifest missing : /path/to/jmx_prometheus_javaagent-<version>.jar Error occurred during initialization of VM agent library failed Agent_OnLoad: instrument
 
 rules:
