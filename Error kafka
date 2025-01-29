@@ -1,6 +1,5 @@
-Formatting metadata directory /tmp/kafka-logs with metadata.version 3.9-IV0. Error while writing meta.properties file /tmp/kafka-logs: java.nio.file.AccessDeniedException: /tmp/kafka-logs/bootstrap.checkpoint.tmp
-
-
+       JMX_PORT : 9994 
+       KAFKA_JMX_OPTS : '-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka-broker -Dcom.sun.management.jmxremote.port=9994 -Dcom.sun.management.jmxremote.rmi.port=9994' 
 
 
 Traceback (most recent call last):
