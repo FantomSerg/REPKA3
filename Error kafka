@@ -1,5 +1,5 @@
-url: https://sec.kalmyk.ru/sc-ui/rest/pm/password?comment=get_for_create_key_{{ hostname }}&token=
-{{ sec_token }}&secAccountPath={{ sec_cred_path }}&secAccountName={{ sec_cred_account_name }}
+Formatting metadata directory /tmp/kafka-logs with metadata.version 3.9-IV0. Error while writing meta.properties file /tmp/kafka-logs: java.nio.file.AccessDeniedException: /tmp/kafka-logs/bootstrap.checkpoint.tmp
+
 
 
 
