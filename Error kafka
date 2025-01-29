@@ -1,6 +1,8 @@
        JMX_PORT : 9994 
        KAFKA_JMX_OPTS : '-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka-broker -Dcom.sun.management.jmxremote.port=9994 -Dcom.sun.management.jmxremote.rmi.port=9994' 
 
+environment:
+  KAFKA_JMX_OPTS: '-javaagent:/path/to/jmx_prometheus_javaagent-<version>.jar=9999:/path/to/jmx_exporter_config.yml'
 
 Traceback (most recent call last):
   File "<string>", line 1, in <module>
