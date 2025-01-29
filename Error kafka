@@ -1,4 +1,29 @@
 rules:
+  # Правила для сбора метрик из брокеров
+  - pattern: "kafka<type=(.+), name=(.+)><>"
+    name: "kafka_$1_$2"
+    labels:
+      instance: "broker"
+
+  # Правила для сбора метрик из контроллеров
+  - pattern: "kafka.controller<type=(.+), name=(.+)><>"
+    name: "kafka_controller_$1_$2"
+    labels:
+      instance: "controller"
+
+  # Правила для сбора метрик из потребителей
+  - pattern: "kafka.consumer<type=(.+), name=(.+)><>"
+    name: "kafka_consumer_$1_$2"
+    labels:
+      instance: "consumer"
+
+  # Правила для сбора метрик из производителей
+  - pattern: "kafka.producer<type=(.+), name=(.+)><>"
+    name: "kafka_producer_$1_$2"
+    labels:
+      instance: "producer"
+
+rules:
   - pattern: "kafka<type=(.+), name=(.+)><>"
     name: "kafka_$1_$2"
     labels:
