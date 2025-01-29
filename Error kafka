@@ -1,3 +1,4 @@
+Error opening zip file or JAR manifest missing : /data/user/services/jmx_prometheus_javaagent-1.0.1.jar Error occurred during initialization of VM agent library failed Agent_OnLoad: instrument
 
 Error opening zip file or JAR manifest missing : /path/to/jmx_prometheus_javaagent-<version>.jar Error occurred during initialization of VM agent library failed Agent_OnLoad: instrument
 
