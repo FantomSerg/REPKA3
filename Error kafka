@@ -1,3 +1,7 @@
+[2025-01-30 08:49:09,115] ERROR [ReplicaManager broker=5] Error processing append operation on partition ecom_order_event-0 (kafka.server.ReplicaManager)
+org.apache.kafka.common.errors.OutOfOrderSequenceException: Out of order sequence number for producer 1000 at offset 6411 in partition ecom_order_event-0: 19 (incoming seq. number), 19 (current end sequence number)
+
+
 rules:
   # Метрики контроллера
   - pattern: "kafka.controller<type=(.+), name=(.+)><>"
