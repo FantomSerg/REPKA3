@@ -1,3 +1,5 @@
+    - mvn gatling:test -Dgatling.simulationClass=$SIMULATION_CLASS -Djavax.net.ssl.trustStore=/tmp/cacert -Djavax.net.ssl.trustStorePassword=changeit
+
 [2025-01-30 10:13:14,864] INFO [broker-10-to-controller-heartbeat-channel-manager]: Recorded new KRaft controller, from now on will use node 10.217.16.229:9092 (id: 2 rack: null) (kafka.server.NodeToControllerRequestThread)
 
 [2025-01-30 08:49:09,115] ERROR [ReplicaManager broker=5] Error processing append operation on partition ecom_order_event-0 (kafka.server.ReplicaManager)
