@@ -1,3 +1,15 @@
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"  # Активируйте профиль, если нужно
+        volumeMounts:
+        - name: keystore-volume
+          mountPath: /app/app.jks  # Путь к .jks файлу в контейнере
+          subPath: app.jks
+      volumes:
+      - name: keystore-volume
+        secret:
+          secretName: app-jks-secre
+
 2025-02-02 15:53:53.394 | main | INFO | io.prometheus.jmx.JavaAgent | Starting ... Failed to start Prometheus JMX Exporter ... java.io.FileNotFoundException: /etc/jmx/jmx_exporter_config.yml (Is a directory) at java.base/java.io.FileInputStream.open0(Native Method) at java.base/java.io.FileInputStream.open(FileInputStream.java:216) at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157) at java.base/java.io.FileReader.<init>(FileReader.java:75) at io.prometheus.jmx.common.yaml.YamlMapAccessor.load(YamlMapAccessor.java:68) at io.prometheus.jmx.JavaAgent.premain(JavaAgent.java:68) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:569) at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491) at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503) Prometheus JMX Exporter exiting
 
 service "kafka-broker2" refers to undefined volume home/fanta/Desktop/kraft/jmx_prometheus_javaagent-1.1.0.jar: invalid compose project
