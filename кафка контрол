@@ -1,3 +1,7 @@
+[kafka-admin-client-thread | adminclient-1] INFO org.apache.kafka.clients.admin.internals.AdminMetadataManager - [AdminClient clientId=adminclient-1] Metadata update failed
+org.apache.kafka.common.errors.UnsupportedVersionException: The broker does not support METADATA
+
+
 ==> Check if Kafka is healthy ...
 SLF4J: Class path contains multiple SLF4J bindings.
 SLF4J: Found binding in [jar:file:/usr/share/java/cp-base-new/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
