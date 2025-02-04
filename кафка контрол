@@ -1,4 +1,8 @@
 
+      CONTROL_CENTER_METRICS_TOPIC: _confluent-metrics
+      CONTROL_CENTER_METRICS_TOPIC_REPLICATION: 3
+      CONTROL_CENTER_METRICS_TOPIC_PARTITIONS: 12
+
   - CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS=kafka-broker:29096,kafka-broker2:29097
 KAFKA_METRICS_REPORTER_CLASSES=io.confluent.metrics.reporter.ConfluentMetricsReporter
 confluent.metrics.reporter.bootstrap.servers=kafka-broker:29096,kafka-broker2:29097
