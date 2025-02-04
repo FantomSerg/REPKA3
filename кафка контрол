@@ -1,0 +1,16 @@
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:latest
+    container_name: control-center
+    depends_on:
+      - kafka-broker
+      - kafka-broker2
+      - schema-registry
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: "kafka-broker:29096,kafka-broker2:29097"
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_MONITORING_INTERVAL_MS: 5000
+      CONTROL_CENTER_LOG4J_LOGGERS: "io.confluent.controlcenter=INFO"
+    ports:
+      - "9021:9021"  # Порт для доступа к Control Center
+    networks:
+      - kafka-net2
