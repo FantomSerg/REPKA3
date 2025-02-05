@@ -1,0 +1,16 @@
+services:
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:latest
+    container_name: kafka-exporter
+    restart: unless-stopped
+    ports:
+      - "9308:9308"  # Порт, на котором kafka-exporter предоставляет метрики
+    environment:
+      - KAFKA_BROKERS=kafka1:9092,kafka2:9092  # Адреса брокеров Kafka
+      - KAFKA_VERSION=2.8.0  # Версия Kafka
+      - LOG_LEVEL=info  # Уровень логирования
+      - METRICS_PORT=9308  # Порт для метрик
+      - KAFKA_EXPORTER_TOPIC_FILTER=".*"  # Фильтр топиков (регулярное выражение)
+      - KAFKA_EXPORTER_GROUP_FILTER=".*"  # Фильтр групп (регулярное выражение)
+    networks:
+      - kafka-net
