@@ -1,4 +1,20 @@
-F0205 10:49:28.790470       1 kafka_exporter.go:893] Error Init Kafka Client: kafka: client has run out of available brokers to talk to: dial tcp: address kafka-controller-1:9091,kafka-controller-2:9092,kafka-controller-3:9093,kafka-controller-4:9094,kafka-controller-5:9095: too many colons in address
+
+  kafka-exporter:
+    image: di-svk-common-docker-local.unixrepo.megafon.ru/tools/bitnami/kafka-exporter:1.6.0
+    container_name: kafka-exporter
+    restart: unless-stopped
+    ports:
+      - "9308:9308"
+    command:
+      - "--kafka.server=kafka-controller-1:9091,kafka-controller-2:9092,kafka-controller-3:9093,kafka-controller-4:9094,kafka-controller-5:9095"
+      - "--kafka.version=3.9.0"
+      - "--log.level=debug"
+    networks:
+      - kafka-net2
+
+
+F0205 10:49:28.790470       1 kafka_exporter.go:893] Error Init Kafka Client: kafka: client has run out of available brokers to 
+talk to: dial tcp: address kafka-controller-1:9091,kafka-controller-2:9092,kafka-controller-3:9093,kafka-controller-4:9094,kafka-controller-5:9095: too many colons in address
 
 
 command:
