@@ -1,6 +1,6 @@
 
   kafka-exporter:
-    image: di-svk-common-docker-local.unixrepo.megafon.ru/tools/bitnami/kafka-exporter:1.6.0
+    image: /bitnami/kafka-exporter:1.6.0
     container_name: kafka-exporter
     restart: unless-stopped
     ports:
