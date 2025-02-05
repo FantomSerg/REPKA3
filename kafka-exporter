@@ -1,3 +1,7 @@
+I0205 11:37:53.217550       1 kafka_exporter.go:800] Starting kafka_exporter (version=1.7.0, branch=HEAD, revision=7e840e81a0170375214e2c1e1dc7ce94aeff8712)
+F0205 11:37:53.977736       1 kafka_exporter.go:901] Error Init Kafka Client: kafka: client has run out of available brokers to talk to: EOF
+
+
 
 I0205 11:12:40.910311       1 kafka_exporter.go:800] Starting kafka_exporter (version=1.7.0, branch=HEAD, revision=7e840e81a0170375214e2c1e1dc7ce94aeff8712)
 F0205 11:12:41.739565       1 kafka_exporter.go:901] Error Init Kafka Client: kafka: client has run out of available brokers to talk to: dial tcp: lookup kafka on 127.0.0.11:53: server misbehaving
