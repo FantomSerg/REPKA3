@@ -1,5 +1,18 @@
-
   kafka-exporter:
+    image: bitnami/kafka-exporter:1.6.0
+    container_name: kafka-exporter
+    restart: unless-stopped
+    ports:
+      - "9308:9308"  # Порт для доступа к метрикам
+    command:
+      - "--kafka.server=kafka-controller-1:9091,kafka-controller-2:9092,kafka-controller-3:9093,kafka-controller-4:9094,kafka-controller-5:9095"
+      - "--kafka.version=3.9.0"  # Укажите правильную версию Kafka
+      - "--log.level=debug"  # Уровень логирования для отладки
+    networks:
+      - kafka-net2
+
+
+kafka-exporter:
     image: /bitnami/kafka-exporter:1.6.0
     container_name: kafka-exporter
     restart: unless-stopped
