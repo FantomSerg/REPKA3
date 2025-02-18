@@ -1,4 +1,4 @@
-
+command: ["/app/console", "--config.file", "/app/config.yaml"]
 auth:
   enabled: true
   type: basic
