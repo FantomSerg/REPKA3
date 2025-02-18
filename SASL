@@ -1,3 +1,32 @@
+[2025-02-18 10:06:44,089] ERROR Cannot invoke "java.nio.channels.ServerSocketChannel.close()" because the return value of "kafka.network.Acceptor.serverChannel()" is null (kafka.network.DataPlaneAcceptor)
+java.lang.NullPointerException: Cannot invoke "java.nio.channels.ServerSocketChannel.close()" because the return value of "kafka.network.Acceptor.serverChannel()" is null
+        at kafka.network.Acceptor.$anonfun$closeAll$2(SocketServer.scala:711)
+        at kafka.utils.CoreUtils$.swallow(CoreUtils.scala:68)
+        at kafka.network.Acceptor.closeAll(SocketServer.scala:711)
+        at kafka.network.Acceptor.close(SocketServer.scala:678)
+        at kafka.network.SocketServer.$anonfun$stopProcessingRequests$4(SocketServer.scala:287)
+        at kafka.network.SocketServer.$anonfun$stopProcessingRequests$4$adapted(SocketServer.scala:287)
+        at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:619)
+        at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:617)
+        at scala.collection.AbstractIterable.foreach(Iterable.scala:935)
+        at kafka.network.SocketServer.stopProcessingRequests(SocketServer.scala:287)
+        at kafka.server.BrokerServer.$anonfun$shutdown$5(BrokerServer.scala:638)
+        at kafka.utils.CoreUtils$.swallow(CoreUtils.scala:68)
+        at kafka.server.BrokerServer.shutdown(BrokerServer.scala:638)
+        at kafka.server.KafkaBroker.shutdown(KafkaBroker.scala:98)
+        at kafka.server.KafkaBroker.shutdown$(KafkaBroker.scala:98)
+        at kafka.server.BrokerServer.shutdown(BrokerServer.scala:67)
+        at kafka.server.BrokerServer.startup(BrokerServer.scala:555)
+        at kafka.server.KafkaRaftServer.$anonfun$startup$2(KafkaRaftServer.scala:99)
+        at kafka.server.KafkaRaftServer.$anonfun$startup$2$adapted(KafkaRaftServer.scala:99)
+        at scala.Option.foreach(Option.scala:437)
+        at kafka.server.KafkaRaftServer.startup(KafkaRaftServer.scala:99)
+        at kafka.Kafka$.main(Kafka.scala:112)
+        at kafka.Kafka.main(Kafka.scala)
+[2025-02-18 10:06:44,095] ERROR Cannot invoke "java.nio.channels.ServerSocketChannel.close()" because the return value of "kafka.network.Acceptor.serverChannel()" is null (kafka.network.DataPlaneAcceptor)
+java.lang.NullPointerException: Cannot invoke "java.nio.channels.ServerSocketChannel.close()" because the return value of "kafka.network.Acceptor.serverChannel()" is null
+
+===============================
 [2025-02-18 09:51:56,634] ERROR [BrokerServer id=4] Fatal error during broker startup. Prepare to shutdown (kafka.server.BrokerServer)
 java.lang.NullPointerException: Cannot invoke "String.indexOf(String)" because "connectString" is null
 ==============================
