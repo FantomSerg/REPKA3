@@ -1,15 +1,15 @@
-{"level":"fatal","msg":"failed to validate config","error":"failed to validate enterprise config: failed to validate RBAC config: RBAC must be enabled until a RBAC-less mode is supported in Redpanda Console"}
-
-
-roles:
-  - name: admin
-    permissions:
-      - resource: "*"
-        actions: ["*"]
-
-
-{"level":"fatal","msg":"failed to load yaml config","error":"failed to unmarshal YAML config into config struct: 1 error(s) decoding:\n\n* '' has invalid keys: rbac"}
-
+ Stable		
+Consumer group has members which have been assigned partitions
+ Completing Rebalance		
+Kafka is assigning partitions to group members
+ Preparing Rebalance		
+A reassignment of partitions is required, members have been asked to stop consuming
+ Empty		
+Consumer group exists, but does not have any members
+ Dead		
+Consumer group does not have any members and it's metadata has been removed
+ Unknown		
+Group state is not known
 kafka:
   brokers:
     - kafka-broker:9999
