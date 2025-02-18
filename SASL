@@ -1,4 +1,26 @@
+kafka:
+  brokers:
+    - kafka-broker:9999
+    - kafka-broker3:9999
+login:
+  enabled: true
+  plain:
+    enabled: true
+    credentials:
+      - username: "admin"
+        password: "kafkauser"
+  jwtSecret: "FP+VnnODH9pDPaE913hGIzVlqYtMtUivZ5H/Rzsh/+g="
+roleBindings:
+  - metadata:
+      name: admin-binding
+    subjects:
+      - kind: user
+        provider: Plain
+        name: admin
+    roleName: redpanda-cluster-admin
 
+
+=============
 roleBindings:
   - metadata:
       name: admin-binding
