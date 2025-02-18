@@ -1,3 +1,8 @@
+    environment:
+      - CONFIG_FILEPATH=/etc/redpanda/redpanda-console-config.yaml
+    volumes:
+      - /path/to/your/redpanda-console-config.yaml:/etc/redpanda/redpanda-console-config.yaml
+
 kafka:
   brokers:
     - kafka-broker:29096
