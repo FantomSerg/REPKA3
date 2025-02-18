@@ -1,3 +1,7 @@
+environment:
+  CONSOLE_FEATURE_FLAG_BROKER_MANAGEMENT: "false"
+
+
 command: ["/app/console", "--config.file", "/app/config.yaml"]
 auth:
   enabled: true
