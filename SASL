@@ -1,3 +1,5 @@
+Failed to create user
+Redpanda Admin API is not enabled (Status 503
 environment:
   CONSOLE_AUTH_ENABLED: "true"
   CONSOLE_AUTH_TYPE: "basic"
