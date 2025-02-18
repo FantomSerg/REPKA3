@@ -1,3 +1,33 @@
+version: '3.9'
+
+services:
+  redpanda-console:
+    image: docker.redpanda.com/redpandadata/console:latest
+    container_name: redpanda-console
+    environment:
+      KAFKA_BROKERS: "kafka-broker:9092"  # Укажите ваш брокер
+      KAFKA_SASL_ENABLED: "true"
+      KAFKA_SASL_MECHANISM: "PLAIN"
+      KAFKA_SASL_USERNAME: "admin"
+      KAFKA_SASL_PASSWORD: "admin-secret"
+      KAFKA_SECURITY_PROTOCOL: "SASL_SSL"
+      KAFKA_SSL_ENABLED: "true"
+      KAFKA_SSL_TRUSTSTORE_LOCATION: "/etc/kafka/secrets/server.truststore.jks"
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: "creds"
+      KAFKA_SSL_KEYSTORE_LOCATION: "/etc/kafka/secrets/server.keystore.jks"
+      KAFKA_SSL_KEYSTORE_PASSWORD: "creds"
+    volumes:
+      - /home/fanta/Desktop/Kafka/secrets:/etc/kafka/secrets
+    ports:
+      - "8080:8080"
+    networks:
+      - kafka-net2
+
+networks:
+  kafka-net2:
+    external: true
+====================================
+
 version: '3.8'
 services:
   redpanda-console:
