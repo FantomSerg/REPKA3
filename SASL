@@ -1,4 +1,11 @@
-version: '3.9'
+environment:
+  CONSOLE_AUTH_ENABLED: "true"
+  CONSOLE_AUTH_TYPE: "basic"
+  CONSOLE_AUTH_BASIC_USERS: "admin:admin-password, user1:user1-password"
+
+  REDPANDA_CONSOLE_AUTHENTICATION_ENABLED: "true"
+  REDPANDA_CONSOLE_AUTHENTICATION_TYPE: "basic"
+  REDPANDA_CONSOLE_AUTHENTICATION_BASIC_USERS: "admin:admin-password, user1:user1-password"
 
 services:
   redpanda-console:
