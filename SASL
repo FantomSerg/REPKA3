@@ -1,3 +1,10 @@
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-password";
+ssl.truststore.location=/etc/kafka/secrets/server.truststore.jks
+ssl.truststore.password=secret
+
+
 jaas.conf |
 KafkaServer {
     org.apache.kafka.common.security.plain.PlainLoginModule required
