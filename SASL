@@ -1,3 +1,6 @@
+
+{"level":"fatal","msg":"failed to load yaml config","error":"failed to unmarshal YAML config into config struct: 1 error(s) decoding:\n\n* '' has invalid keys: roleBindings"}
+
 kafka:
   brokers:
     - kafka-broker:9999
