@@ -1,4 +1,13 @@
 
+roleBindings:
+  - metadata:
+      name: admin-binding
+    subjects:
+      - kind: user
+        provider: Plain
+        name: admin
+    roleName: redpanda-cluster-admin
+
 {"level":"fatal","msg":"failed to validate config","error":"failed to validate enterprise config: failed to validate RBAC config: RBAC must be enabled until a RBAC-less mode is supported in Redpanda Console"}
 
 
