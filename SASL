@@ -1,3 +1,6 @@
+[2025-02-18 09:51:56,634] ERROR [BrokerServer id=4] Fatal error during broker startup. Prepare to shutdown (kafka.server.BrokerServer)
+java.lang.NullPointerException: Cannot invoke "String.indexOf(String)" because "connectString" is null
+==============================
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-password";
