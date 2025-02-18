@@ -1,4 +1,4 @@
-{"level":"fatal","msg":"failed to validate config","error":"failed to validate login config: you must set a secret key (min 10 chars) that is required for signing the session JWTs"}
+{"level":"fatal","msg":"failed to load yaml config","error":"failed to unmarshal YAML config into config struct: 1 error(s) decoding:\n\n* '' has invalid keys: jwtSecret"}
 
 
 command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
