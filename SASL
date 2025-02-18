@@ -1,3 +1,13 @@
+
+auth:
+  enabled: true
+  type: basic
+  basic:
+    users:
+      admin: admin-password
+      user1: user1-password
+
+
 Failed to create user
 Redpanda Admin API is not enabled (Status 503
 environment:
