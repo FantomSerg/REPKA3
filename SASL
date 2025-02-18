@@ -7,6 +7,10 @@ KafkaServer {
 
 
 
+      # Настройки авторизации
+      KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "false" # Запретить доступ всем, если нет ACL
+      KAFKA_SUPER_USERS: "User:admin" # Указываем суперпользователя
   kafka-broker:
     image: confluentinc/cp-kafka:latest
     container_name: kafka-broker
