@@ -13,14 +13,15 @@ login:
       - username: "admin"
         password: "kafkauser"
   jwtSecret: "FP+VnnODH9pDPaE913hGIzVlqYtMtUivZ5H/Rzsh/+g="
-roleBindings:
-  - metadata:
-      name: admin-binding
-    subjects:
-      - kind: user
-        provider: Plain
-        name: admin
-    roleName: redpanda-cluster-admin
+rbac:
+  roleBindings:
+    - metadata:
+        name: admin-binding
+      subjects:
+        - kind: user
+          provider: Plain
+          name: admin
+      roleName: redpanda-cluster-admin
 
 
 =============
