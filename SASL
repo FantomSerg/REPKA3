@@ -1,5 +1,17 @@
-environment:
-  CONSOLE_FEATURE_FLAG_BROKER_MANAGEMENT: "false"
+kafka:
+  brokers:
+    - kafka-broker:29096
+    - kafka-broker2:29097
+login:
+  enabled: true
+  plain:
+    enabled: true
+    credentials:
+      - username: "admin"
+        password: "admin-password"
+      - username: "user"
+        password: "user-password"
+
 
 
 command: ["/app/console", "--config.file", "/app/config.yaml"]
