@@ -1,23 +1,19 @@
-version: '3.9'
-
+version: '3.8'
 services:
-  kafka-ui:
-    image: provectuslabs/kafka-ui
-    container_name: kafka-ui
-    environment:
-      KAFKA_CLUSTERS_0_NAME: "My Kafka Cluster"
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka-broker:9092"
-      KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: "SASL_SSL"
-      KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM: "PLAIN"
-      KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";'
+  redpanda-console:
+    image: docker.redpanda.com/redpandadata/console:v2.8.2
+    container_name: redpanda-console
     ports:
       - "8080:8080"
-    networks:
-      - kafka-net2
+    environment:
+      KAFKA_BROKERS: "your-kafka-broker:9092"
+      KAFKA_SECURITY_PROTOCOL: "SASL_PLAINTEXT"
+      KAFKA_SASL_MECHANISM: "SCRAM-SHA-512"
+      KAFKA_SASL_USERNAME: "admin"
+      KAFKA_SASL_PASSWORD: "admin-secret"
+      CONSOLE_AUTH_ENABLED: "true"
+      CONSOLE_AUTH_BASIC_USERS: "admin:admin-password, user1:user1-password"
 
-networks:
-  kafka-net2:
-    external: true
 ==============================
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
