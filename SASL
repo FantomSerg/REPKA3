@@ -1,3 +1,11 @@
+Application rabbitmq_prelaunch exited with reason: {{shutdown,{failed_to_start_child,prelaunch,
+{badmatch,{error,{{shutdown,{failed_to_start_child,auth,{"Failed to create cookie file 
+'/var/lib/rabbitmq/.erlang.cookie': eacces",[{auth,init_no_setcookie,0,[{file,"auth.erl"},{line,313}]},{auth,init,1,[{file,"auth.erl"},{line,165}]},
+{gen_server,init_it,2,[{file,"gen_server.erl"},{line,851}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,814}]},{proc_lib,init_p_do_apply,3,
+[{file,"proc_lib.erl"},{line,240}]}]}}},{child,undefined,net_sup_dynamic,{erl_distribution,start_link,[#{clean_halt => false,name =>
+rabbit_prelaunch_13@localhost,name_domain => shortnames,net_tickintensity => 4,net_ticktime => 60,supervisor => net_sup_dynamic}]},permanent,false,
+1000,supervisor,[erl_distribution]}}}}}},{rabbit_prelaunch_app,start,[normal,[]]}}
+
 sh-keygen -R ms-im-sms.megafon.ru,ms-im-sms && ssh-keyscan -H msk-im-sms.ru,msk-im-sms1 >> ~/.ssh/known_hosts
 
 - name: Add account to sec
