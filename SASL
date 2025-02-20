@@ -1,4 +1,6 @@
-    - name: Add account to sec
+sh-keygen -R ms-im-sms.megafon.ru,ms-im-sms && ssh-keyscan -H msk-im-sms.ru,msk-im-sms1 >> ~/.ssh/known_hosts
+
+- name: Add account to sec
       uri:
         url: https://sec.kalm.ru/aioc-rest-web/rest/sc/sapm/addSapmAccount
         method: POST
