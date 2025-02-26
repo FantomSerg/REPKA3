@@ -1,1 +1,2 @@
-node-exporter Published ports are discarded when using host network mode
+ts=2025-02-26T12:43:18.685Z caller=tls_config.go:232 level=info msg="Listening on" address=[::]:9100
+ts=2025-02-26T12:43:18.685Z caller=tls_config.go:235 level=info msg="TLS is disabled." http2=false address=[::]:9100
