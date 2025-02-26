@@ -1,0 +1,2 @@
+Vulnerable OS: CentOS Stream 9Vulnerable software installed: Azul Systems JRE 11.50.19 (/data/docker/overlay2/72b05ccc2b146fcab770cea32305952b96a7fcf051c6a0286bd7d6fcdfa6da3e/diff/usr/lib/jvm/zulu11-ca/lib/jrt-fs.jar)
+Azul Zulu: CVE-2024-21147: Vulnerability in the Hotspot component
