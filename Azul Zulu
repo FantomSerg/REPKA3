@@ -1,3 +1,9 @@
+      KAFKA_LOG_RETENTION_MS: "604800000"
+      KAFKA_LOG_RETENTION_BYTES: "1073741824"
+      KAFKA_LOG_SEGMENT_BYTES: "104857600"
+
+
+
 policy restrict-seccomp/check-seccomp fail: validation error: Use of custom Seccomp profiles is disallowed. 
 The fields spec.securityContext.seccompProfile.type, spec.containers[*].securityContext.seccompProfile.type, spec.initContainers[*].securityContext.seccompProfile.type,
 and spec.ephemeralContainers[*].securityContext.seccompProfile.type must be unset or set to `RuntimeDefault` or `Localhost`. rule check-seccomp failed at path
