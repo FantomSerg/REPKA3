@@ -1,1 +1,9 @@
-policy restrict-seccomp/check-seccomp fail: validation error: Use of custom Seccomp profiles is disallowed. The fields spec.securityContext.seccompProfile.type, spec.containers[*].securityContext.seccompProfile.type, spec.initContainers[*].securityContext.seccompProfile.type, and spec.ephemeralContainers[*].securityContext.seccompProfile.type must be unset or set to `RuntimeDefault` or `Localhost`. rule check-seccomp failed at path /spec/securityContext/seccompProfile/type/
+policy restrict-seccomp/check-seccomp fail: validation error: Use of custom Seccomp profiles is disallowed. 
+The fields spec.securityContext.seccompProfile.type, spec.containers[*].securityContext.seccompProfile.type, spec.initContainers[*].securityContext.seccompProfile.type,
+and spec.ephemeralContainers[*].securityContext.seccompProfile.type must be unset or set to `RuntimeDefault` or `Localhost`. rule check-seccomp failed at path
+/spec/securityContext/seccompProfile/type/
+
+
+rollback.go:84: [debug] updating status for rolled back release for fluent-bit
+Error: UPGRADE FAILED: release fluent-bit failed, and has been rolled back due to atomic being set: cannot patch "fluent-bit" with kind Deployment: admission webhook "validate.kyverno.svc-fail" denied the request: failed create policy context
+helm.go:84: [debug] cannot patch "fluent-bit" with kind Deployment: admission webhook "validate.kyverno.svc-fail" denied the request: failed create policy context
