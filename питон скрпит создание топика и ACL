@@ -1,0 +1,50 @@
+from confluent_kafka import AdminClient, NewTopic, KafkaException, KafkaError
+import logging
+
+# Настройки для подключения к Kafka с использованием SASL_SSL
+conf = {
+    'bootstrap.servers': 'broker1:9093',  # Адрес вашего брокера
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanism': 'PLAIN',  # Механизм SASL
+    'sasl.username': 'your-username',  # Имя пользователя для SASL аутентификации
+    'sasl.password': 'your-password',  # Пароль для SASL аутентификации
+    'ssl.keystore.location': '/path/to/keystore.jks',  # Путь к keystore
+    'ssl.keystore.password': 'your-keystore-password',  # Пароль keystore
+    'ssl.truststore.location': '/path/to/truststore.jks',  # Путь к truststore
+    'ssl.truststore.password': 'your-truststore-password',  # Пароль truststore
+    'ssl.endpoint.identification.algorithm': 'https'  # Указание на SSL идентификацию
+}
+
+# Создание клиента AdminClient для работы с Kafka
+client = AdminClient(conf)
+
+# Функция для создания топика
+def create_topic(topic_name, num_partitions, replication_factor):
+    try:
+        # Создание топика
+        new_topic = client.create_topics(
+            [NewTopic(topic_name, num_partitions, replication_factor)],
+            operation_timeout=30
+        )
+
+        # Подтверждение успешного создания топика
+        new_topic.result()
+        print(f"Топик '{topic_name}' успешно создан.")
+    
+    except KafkaException as e:
+        print(f"Ошибка при создании топика: {e}")
+    except Exception as e:
+        print(f"Неизвестная ошибка: {e}")
+
+if __name__ == '__main__':
+    # Запрашиваем параметры у пользователя
+    topic_name = input("Введите имя топика: ")
+    try:
+        num_partitions = int(input("Введите количество партиций: "))
+        replication_factor = int(input("Введите количество реплик: "))
+    except ValueError:
+        print("Ошибка: Пожалуйста, введите целые числа для партиций и реплик.")
+        exit(1)
+    
+    # Создаем топик с указанными параметрами
+    create_topic(topic_name, num_partitions, replication_factor)
