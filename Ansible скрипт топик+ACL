@@ -1,0 +1,30 @@
+---
+- name: Create Kafka Topic
+  hosts: kafka_brokers  # Укажите ваш инвентори файл, содержащий список брокеров
+  become: true  # Если необходимо выполнять от имени суперпользователя
+  vars:
+    kafka_bootstrap_server: "broker1:9092"  # Адрес брокера для создания топика
+    topic_name: "my_topic"  # Название топика
+    partitions: 3  # Количество партиций
+    replication_factor: 3  # Количество реплик
+    acl_user: ""  # Имя пользователя для ACL
+
+  tasks:
+    - name: Create Kafka Topic
+      command: >
+        kafka-topics.sh --bootstrap-server {{ kafka_bootstrap_server }} --create --topic {{ topic_name }}
+        --partitions {{ partitions }} --replication-factor {{ replication_factor }}
+
+    - name: Set ACL for the topic (Read and Write)
+      command: >
+        kafka-acls.sh --bootstrap-server {{ kafka_bootstrap_server }} --add --allow-principal User:{{ acl_user }}
+        --operation Read --operation Write --topic {{ topic_name }}
+
+    - name: Verify topic creation
+      command: kafka-topics.sh --bootstrap-server {{ kafka_bootstrap_server }} --describe --topic {{ topic_name }}
+      register: topic_status
+      changed_when: false
+
+    - name: Print topic creation status
+      debug:
+        var: topic_status.stdout
