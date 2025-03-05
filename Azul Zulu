@@ -1,6 +1,8 @@
+===> Setting default values of environment variables if not already set.
+===> Configuring ...
+Running in KRaft mode...
+/opt/kafka/config/ file not writable
 
--bash: UID: readonly variable
--bash: export: `GID-57910': not a valid identifier
 
 
 
