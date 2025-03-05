@@ -1,6 +1,7 @@
-      KAFKA_LOG_RETENTION_MS: "604800000"
-      KAFKA_LOG_RETENTION_BYTES: "1073741824"
-      KAFKA_LOG_SEGMENT_BYTES: "104857600"
+
+-bash: UID: readonly variable
+-bash: export: `GID-57910': not a valid identifier
+
 
 
 
