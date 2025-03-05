@@ -1,7 +1,4 @@
-===> Setting default values of environment variables if not already set.
-===> Configuring ...
-Running in KRaft mode...
-/opt/kafka/config/ file not writable
+kafka-acls.sh --bootstrap-server your-kafka-broker:9093 --add --allow-principal User:serg --operation Read --topic '*'
 
 
 
