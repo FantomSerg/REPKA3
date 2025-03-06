@@ -1,0 +1,8 @@
+unitTests: preCheck auth
+	DOCKER_CONFIG=/home/jenkins/.docker mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+	org.jacoco:jacoco-maven-plugin:report --settings ${LANG_PATH}/product/buildpack/settings.xml \
+	-Drepo.username=${USER} -Drepo.password=${PASSWORD} \
+	-Dmaven.repo.local=${LANG_PATH}/dependency/ dependency:copy-dependencies \
+	-DoutputDirectory=${LANG_PATH}/target/classes \
+	-Dsonar.coverage.jacoco.xmlReportPaths=${LANG_PATH}/target/site/jacoco/jacoco.xml \
+	--batch-mode -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
