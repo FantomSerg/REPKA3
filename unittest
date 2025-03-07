@@ -1,6 +1,6 @@
 KMinion, как инструмент для мониторинга Apache Kafka, не собирает данные пользователей в смысле личной информации или конфиденциальных данных. Основная цель KMinion — это сбор и экспорт метрик производительности и состояния Kafka-кластера для мониторинга и анализа.
 
-
+https://nvd.nist.gov/vuln/detail/CVE-2025-26519
 
 unitTests: preCheck auth
 DOCKER_CONFIG=/home/jenkins/.docker mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
