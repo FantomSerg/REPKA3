@@ -1,3 +1,58 @@
+Prometheus Java Client
+Metrics Path
+The metrics path is /metrics.
+Name Filter
+If you want to scrape only specific metrics, use the name[] parameter like this:
+/metrics?name[]=my_metric
+You can also use multiple name[] parameters to query multiple metrics:
+/metrics?name[]=my_metric_a&name=[]=my_metric_b
+The name[] parameter can be used by the Prometheus server for scraping. Add the following snippet to your scrape job configuration in prometheus.yaml:
+params:
+    name[]:
+        - my_metric_a
+        - my_metric_b
+Debug Parameter
+The Prometheus Java metrics library supports multiple exposition formats. The Prometheus server sends the Accept header to indicate which format it accepts.
+By default, the Prometheus server accepts OpenMetrics text format, unless the Prometheus server is started with feature flag --enable-feature=native-histograms,
+in which case the default is Prometheus protobuf. The Prometheus Java metrics library supports a debug query parameter for viewing the different formats in
+a Web browser:
+/metrics?debug=openmetrics: View OpenMetrics text format.
+/metrics?debug=text: View Prometheus text format (this is the default when accessing the /metrics endpoint with a Web browser).
+/metrics?debug=prometheus-protobuf: View a text representation of the Prometheus protobuf format.
+Note that the debug parameter is only for viewing different formats in a Web browser, it should not be used by the Prometheus server for scraping.
+The Prometheus server uses the Accept header for indicating which format it accepts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 lowercaseOutputName: true
 rules:
   # Broker metrics
