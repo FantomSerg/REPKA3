@@ -1,30 +1,4 @@
-Failed to start Prometheus JMX Exporter while scanning for the next token found character '\t(TAB)' that cannot start any token. 
-(Do not use \t(TAB) for indentation) in 'reader', line 102, column 23: quantile: "0.$4" ^ at io.prometheus.jmx.shaded.org.yaml.snakeyaml.scanner.ScannerImpl.
-fetchMoreTokens(ScannerImpl.java:445) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.scanner.ScannerImpl.checkToken(ScannerImpl.java:238) at io.prometheus.jmx.
-shaded.org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:637) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.parser.ParserImpl.
-peekEvent(ParserImpl.java:161) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:57) 
-at io.prometheus.jmx.shaded.org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:43) at io.prometheus.jmx.shaded.org.yaml.
-snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:136) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.comments.
-CommentEventsCollector.collectEvents(CommentEventsCollector.java:116) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeScalarNode
-(Composer.java:241) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:205) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.
-composer.Composer.composeValueNode(Composer.java:369) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:348) 
-at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:323) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer
-.Composer.composeNode(Composer.java:209) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeValueNode(Composer.java:369) at io.prometheus.
-jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:348) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.
-composeMappingNode(Composer.java:323) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:209) at io.prometheus.jmx.shaded.org
-.yaml.snakeyaml.composer.Composer.composeSequenceNode(Composer.java:277) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeNode
-(Composer.java:207) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeValueNode(Composer.java:369) 
-at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:348) 
-at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:323) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.
-Composer.composeNode(Composer.java:209) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.getNode(Composer.java:131) 
-at io.prometheus.jmx.shaded.org.yaml.snakeyaml.composer.Composer.getSingleNode(Composer.java:157) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.constructor.
-BaseConstructor.getSingleData(BaseConstructor.java:178) at io.prometheus.jmx.shaded.org.yaml.snakeyaml.Yaml.loadFromReader(Yaml.java:493) at io.prometheus.
-jmx.shaded.org.yaml.snakeyaml.Yaml.load(Yaml.java:446) at io.prometheus.jmx.JmxCollector.<init>(JmxCollector.java:113) at io.prometheus.jmx.
-JavaAgent.premain(JavaAgent.java:55) at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) at
-java.base/java.lang.reflect.Method.invoke(Unknown Source) at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(Unknown Source) 
-at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(Unknown Source) Prometheus JMX Exporter exiting
-
-
+https://grafana.com/grafana/dashboards/18276-kafka-dashboard/
 
 
 
