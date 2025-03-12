@@ -1,3 +1,9 @@
+npm error Missing script: "generate"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-03-12T19_23_24_328Z-debug-0.log
+
 # Добавьте NodeSource репозиторий для Node.js 20
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
