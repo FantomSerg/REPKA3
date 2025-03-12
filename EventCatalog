@@ -1,3 +1,4 @@
+npx @eventcatalog/create-eventcatalog@latest .
 Для сборки Docker-образа EventCatalog с интеграцией Kubernetes-сервисов и поддержкой Swagger/AsyncAPI выполните следующие шаги:
 
 ### 1. Создайте базовую структуру проекта
