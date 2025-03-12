@@ -1,3 +1,9 @@
+curl -s https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+sudo apt update
+
+
+
 wget -q -O /tmp/grafana.gpg.key https://apt.grafana.com/gpg.key
 gpg --dearmor /tmp/grafana.gpg.key > /etc/apt/keyrings/grafana.gpg
 rm /tmp/grafana.gpg.key  # Опционально: удалить временный файл
