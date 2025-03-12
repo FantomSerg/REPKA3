@@ -1,3 +1,9 @@
+# Добавьте NodeSource репозиторий для Node.js 20
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+
+# Установите Node.js и npm
+sudo apt install -y nodejs
+============
 udo npx npm i @eventcatalog/create-eventcatalog .
 Need to install the following packages:
   npm
