@@ -1,3 +1,38 @@
+udo npx npm i @eventcatalog/create-eventcatalog .
+Need to install the following packages:
+  npm
+Ok to proceed? (y) y
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'npm@11.2.0',
+npm WARN EBADENGINE   required: { node: '^20.17.0 || >=22.9.0' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+glob error [Error: EACCES: permission denied, scandir '/root/.npm/_logs'] {
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'scandir',
+  path: '/root/.npm/_logs'
+}
+npm WARN logfile Error: EACCES: permission denied, scandir '/root/.npm/_logs'
+npm WARN logfile  error cleaning log files [Error: EACCES: permission denied, scandir '/root/.npm/_logs'] {
+npm WARN logfile   errno: -13,
+npm WARN logfile   code: 'EACCES',
+npm WARN logfile   syscall: 'scandir',
+npm WARN logfile   path: '/root/.npm/_logs'
+npm WARN logfile }
+npm ERR! code EACCES
+npm ERR! syscall mkdir
+npm ERR! path /root/.npm/_cacache/tmp
+npm ERR! errno -13
+npm ERR! 
+npm ERR! Your cache folder contains root-owned files, due to a bug in
+npm ERR! previous versions of npm which has since been addressed.
+npm ERR! 
+npm ERR! To permanently fix this problem, please run:
+npm ERR!   sudo chown -R 1000:1000 "/root/.npm"
+
+npm ERR! A complete log of this run can be found in:
+======================
 docker run -p 3000:3000 -p 80:80 eventcatalog-kuber
 npm error Missing script: "generate"
 npm error
