@@ -1,5 +1,6 @@
-kafka_server_replicamanager_partitioncount
-
+count(kafka_server_replicamanager_leadercount)
+sum(kafka_controller_kafkacontroller_activecontrollercount)
+avg by(instance) (kafka_network_requestmetrics_totaltimems)
 
 
 
