@@ -1,3 +1,9 @@
+lowercaseOutputName: true
+rules:
+  - pattern: "kafka.server<type=ReplicaManager, name=Topics><>Value"
+    name: "kafka_server_replicamanager_topics"
+    type: GAUGE
+
 count(kafka_server_replicamanager_leadercount)
 sum(kafka_controller_kafkacontroller_activecontrollercount)
 avg by(instance) (kafka_network_requestmetrics_totaltimems)
