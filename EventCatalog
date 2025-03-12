@@ -24,6 +24,10 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN apk add --no-cache nginx && \
     mkdir -p /run/nginx
 
+USER root
+RUN apk add --no-cache nginx && \
+    mkdir -p /run/nginx
+
 # Сборка каталога
 RUN npx @eventcatalog/create-eventcatalog@latest . --skip-install && \
     npm install
