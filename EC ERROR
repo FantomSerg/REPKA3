@@ -1,3 +1,10 @@
+mkdir -p /etc/apt/keyrings/
+wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | tee /etc/apt/sources.list.d/grafana.list
+apt update
+
+
+
 E: Не удалось получить https://apt.grafana.com/dists/stable/InRelease  403  Access Denied [IP: 146.75.122.217 443]
 E: Репозиторий «https://apt.grafana.com stable InRelease» больше не подписан.
 
