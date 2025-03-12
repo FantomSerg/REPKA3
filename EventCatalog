@@ -1,0 +1,131 @@
+Для сборки Docker-образа EventCatalog с интеграцией Kubernetes-сервисов и поддержкой Swagger/AsyncAPI выполните следующие шаги:
+
+### 1. Создайте базовую структуру проекта
+```bash
+mkdir eventcatalog-docker && cd eventcatalog-docker
+touch Dockerfile eventcatalog.config.js nginx.conf
+```
+
+### 2. Dockerfile
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Установка зависимостей EventCatalog
+RUN npm install -g @eventcatalog/core @eventcatalog/generator-openapi @eventcatalog/generator-asyncapi
+
+# Копирование конфигурации
+COPY eventcatalog.config.js .
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Установка Nginx и зависимостей
+RUN apk add --no-cache nginx && \
+    mkdir -p /run/nginx
+
+# Сборка каталога
+RUN npx @eventcatalog/create-eventcatalog@latest . --skip-install && \
+    npm install
+
+EXPOSE 3000 80
+
+CMD ["sh", "-c", "npm run generate && nginx && npm run dev -- --host 0.0.0.0"]
+```
+
+### 3. Конфигурация EventCatalog (eventcatalog.config.js)
+```javascript
+import path from 'path';
+
+export default {
+  generators: [
+    [
+      '@eventcatalog/generator-openapi',
+      {
+        services: [
+          {
+            url: 'http://service-name.namespace.svc.cluster.local/swagger.json',
+            id: 'my-service-openapi',
+            version: '1.0.0'
+          }
+        ],
+        domain: {
+          id: 'kubernetes-services',
+          name: 'Kubernetes Services'
+        }
+      }
+    ],
+    [
+      '@eventcatalog/generator-asyncapi', 
+      {
+        services: [
+          {
+            url: 'http://asyncapi-service.namespace.svc.cluster.local/asyncapi.yaml',
+            id: 'my-service-asyncapi',
+            version: '1.0.0'
+          }
+        ]
+      }
+    ]
+  ]
+};
+```
+
+### 4. Настройка Nginx (nginx.conf)
+```nginx
+server {
+    listen 80;
+    server_name localhost;
+
+    location /swagger/ {
+        proxy_pass http://service-name.namespace.svc.cluster.local/;
+    }
+
+    location /asyncapi/ {
+        proxy_pass http://asyncapi-service.namespace.svc.cluster.local/;
+    }
+}
+```
+
+### Сборка и запуск:
+```bash
+docker build -t eventcatalog-kubernetes .
+docker run -p 3000:3000 -p 80:80 eventcatalog-kubernetes
+```
+
+**Ключевые особенности решения:**
+1. **Доступ к Kubernetes-сервисам** через внутренние DNS-имена вида `..svc.cluster.local`[4][5]
+2. **Автоматическая генерация документации** при старте контейнера через `npm run generate`[7][8]
+3. **Проксирование запросов** к Swagger/AsyncAPI через Nginx для доступа извне кластера[4][9]
+4. **Поддержка версионирования** через настройки в `eventcatalog.config.js`[1][8]
+
+Для работы в Kubernetes обеспечьте:
+- Доступность Swagger/AsyncAPI эндпоинтов у ваших микросервисов
+- Правильные network policies для взаимодействия между подами
+- Настройку service accounts с необходимыми разрешениями[4][5]
+
+Образ будет автоматически подтягивать актуальные спецификации из ваших сервисов при каждой генерации каталога, сохраняя историю версий через встроенную систему EventCatalog[1][8].
+
+Citations:
+[1] https://www.npmjs.com/package/@eventcatalog%2Fgenerator-openapi
+[2] https://github.com/mikaelvesavuori/eventcatalog-scaffold-asyncapi
+[3] https://v1.eventcatalog.dev/docs/introduction
+[4] https://stackoverflow.com/questions/62932053/can-swagger-ui-work-for-services-inside-kubernetes
+[5] https://swagger.io/blog/api-strategy/microservices-apis-and-swagger/
+[6] https://support.smartbear.com/swaggerhub/docs/en/asyncapi-support.html
+[7] https://dev.to/axeldlv/building-a-catalog-for-event-driven-architectures-with-eventcatalog-and-asyncapi-4m5i
+[8] https://www.eventcatalog.dev/docs/development/plugins/async-api/intro
+[9] https://swagger.io/blog/using-event-driven-asyncapi-specifications-with-sw/
+[10] https://github.com/wso2/reference-architecture/blob/master/event-driven-api-architecture.md
+[11] https://support.smartbear.com/swaggerhub/docs/en/get-started/basics-of-swaggerhub.html
+[12] https://swagger.io/blog/consistent-kubernetes-microservices-with-openapi/
+[13] https://eventcatalog.dev/blog/asyncapi-eventcatalog
+[14] https://github.com/umccr/orcabus-eventcatalog/blob/main/Dockerfile
+[15] https://github.com/event-catalog/eventcatalog-multi-generator-example
+[16] https://www.asyncapi.com/tools
+[17] https://www.infoq.com/presentations/event-driven-asyncapi/
+[18] https://www.youtube.com/watch?v=oExrtm5vMSE
+[19] https://www.eventcatalog.dev/integrations/openapi
+[20] https://www.getambassador.io/blog/apis-microservices-architectures-guide
+
+---
+Answer from Perplexity: pplx.ai/share
