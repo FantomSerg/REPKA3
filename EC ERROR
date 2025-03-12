@@ -1,3 +1,10 @@
+docker run -p 3000:3000 -p 80:80 eventcatalog-kuber
+npm error Missing script: "generate"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-03-12T18_47_50_807Z-debug-0.log
+===========================
 npm ERR! code E404
 npm ERR! 404 Not Found - GET https://registry.npmjs.org/eventcatalog - Not found
 npm ERR! 404 
