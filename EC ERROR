@@ -1,3 +1,5 @@
+sudo nano /etc/apt/sources.list.d/nodesource.list
+
 npm error Missing script: "generate"
 npm error
 npm error To see a list of scripts, run:
