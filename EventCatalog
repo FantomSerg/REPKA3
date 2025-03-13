@@ -1,3 +1,30 @@
+FROM mf-ubi-target-docker-local.ru/alpine:3.19-updated
+
+ENV CREATECATALOG_VERSION="2.2.7" \
+    GENERATORASYNCAPI_VERSION="3.0.5" \
+    GENERATOROPENAPI_VERSION="4.0.7"
+
+WORKDIR /app
+
+COPY resources/ .
+
+# Установка зависимостей
+RUN npm i -D -g \
+    @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
+    @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+    @eventcatalog/generator-asyncapi@${ENERATORASYNCAPI_VERSION}
+
+# Инициализация каталога
+RUN npx @eventcatalog/create-catalog --template minimal ./catalog
+
+# Сборка
+RUN cd catalog && \
+    npm install && \
+    npm run build
+
+
+
+
 FROM mfreshop-common-docker-local.unixrepo.megafon.ru/base/nginx:1.24.0 AS base
 COPY --from=base /app/catalog/out /usr/share/nginx/html
 =================================
