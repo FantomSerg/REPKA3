@@ -1,9 +1,19 @@
-build_image:
-  rules:
-    - when: never
+FROM alpine:3.19-updated as base
+ENV CREATECATALOG_VERSION="2.2.7" \
+    GENERATORASYNCAPI_VERSION="3.0.5" \
+    GENERATOROPENAPI_VERSION="4.0.7"
+WORKDIR /app
+COPY . .
+ENV NODE_OPTIONS=--max_old_space_size=2048
+RUN npm i -D -g \
+    @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
+    @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+    @eventcatalog/generator-asyncapi@${ENERATORASYNCAPI_VERSION} \
+    NODE_OPTIONS=--max_old_space_size=2048
+RUN npm run build
 
-build_image_base:
-  extends: .build_image
+FROM nginx:1.24.0
+COPY /resources/etc/nginx /etc/nginx
 
 
 
