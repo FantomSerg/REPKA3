@@ -17,10 +17,6 @@ RUN curl -o /app/openapi.yaml "http://istio.serkalm.k8s.moskow.ru:8080/api/kafka
 # Инициализация каталога
 RUN npx @eventcatalog/create-catalog --template minimal ./catalog
 
-# Копирование конфигов
-COPY eventcatalog.config.js .
-COPY generators/security-headers.js ./catalog/generators/
-
 # Сборка
 RUN cd catalog && \
     npm install && \
@@ -29,11 +25,14 @@ RUN cd catalog && \
 # Stage 2: Финалный образ
 FROM nginx:1.23-alpine
 
-# Конфигурация безопасности
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# Копирование документации
 COPY --from=builder /app/catalog/out /usr/share/nginx/html
 
+# Копирование конфигурации Nginx
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
+
 
 
 
