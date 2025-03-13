@@ -1,3 +1,19 @@
+{
+  "name": "eventcatalog-project",
+  "version": "1.0.0",
+  "description": "EventCatalog project for documenting event-driven architecture",
+  "scripts": {
+    "build": "docker build -t eventcatalog .",
+    "start": "docker run -p 80:80 eventcatalog"
+  },
+  "dependencies": {
+    "@eventcatalog/create-catalog": "^3.4.1",
+    "@eventcatalog/generator-asyncapi": "^1.2.3",
+    "@eventcatalog/generator-openapi": "^2.0.7"
+  }
+}
+
+=============================
 server {
     listen 80;
     server_name localhost;
