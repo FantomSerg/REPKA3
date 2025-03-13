@@ -1,3 +1,5 @@
+export PATH="/usr/local/nodejs/bin:$PATH"
+
 sudo ln -s /usr/local/nodejs/bin/node /usr/local/bin/node
 sudo ln -s /usr/local/nodejs/bin/npm /usr/local/bin/npm
 sudo ln -s /usr/local/nodejs/bin/npx /usr/local/bin/npx
