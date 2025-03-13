@@ -1,3 +1,5 @@
+sudo npx @eventcatalog/create-eventcatalog@latest my-catalog
+
 export PATH="/usr/local/nodejs/bin:$PATH"
 
 sudo ln -s /usr/local/nodejs/bin/node /usr/local/bin/node
