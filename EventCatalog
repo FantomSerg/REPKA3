@@ -1,3 +1,6 @@
+FROM mfreshop-common-docker-local.unixrepo.megafon.ru/base/nginx:1.24.0 AS base
+COPY --from=base /app/catalog/out /usr/share/nginx/html
+=================================
 {
   "name": "eventcatalog-project",
   "version": "1.0.0",
