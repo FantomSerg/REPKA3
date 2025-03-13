@@ -1,3 +1,10 @@
+ 
+
+Пример ссылки на наш AsyncAPI: http://istio.serkalm.k8s.moskow.ru:8080/api/ecom-kafka-sergkalm-app/async-api/asyncapi-ui.html
+
+Пример ссылки на наш OpenAPI: http://istio.serkalm.k8s.moskow.ru:8080/api/kafka-sergkalm-app/open-api/swagger-ui/index.html
+
+
 npx @eventcatalog/create-eventcatalog@latest .
 Для сборки Docker-образа EventCatalog с интеграцией Kubernetes-сервисов и поддержкой Swagger/AsyncAPI выполните следующие шаги:
 
