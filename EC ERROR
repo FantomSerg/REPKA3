@@ -1,3 +1,25 @@
+sudo npx @eventcatalog/create-eventcatalog@latest my-catalog
+Need to install the following packages:
+  @eventcatalog/create-eventcatalog@latest
+Ok to proceed? (y) y
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'signal-exit@4.1.0',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+/usr/local/lib/node_modules/@eventcatalog/create-eventcatalog/dist/index.js:15222
+  #fillNegs() {
+           ^
+
+SyntaxError: Unexpected token '('
+    at wrapSafe (internal/modules/cjs/loader.js:915:16)
+    at Module._compile (internal/modules/cjs/loader.js:963:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)
+    at internal/main/run_main_module.js:17:47
+
 wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/grafana.key > /dev/null
 
 gpg: не найдено данных формата OpenPGP.
