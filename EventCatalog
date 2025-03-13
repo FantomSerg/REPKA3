@@ -1,4 +1,9 @@
-# Docker file used for CI/CD pipeline to verify builds with their dependencies
+ERROR: failed to solve: process "/bin/sh -c npm install -D --global     @eventcatalog/create-catalog@${CREATECATALOG_VERSION} 
+@eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION}   
+@eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} CMD {\"eventcatalog\", \"build\"}" did not complete successfully: exit code: 1
+
+
+============# Docker file used for CI/CD pipeline to verify builds with their dependencies
 FROM node:20.17 AS builder
 WORKDIR /usr/eventcatalog/
 COPY package*.json .
