@@ -1,4 +1,9 @@
-apt -y install bash npm curl git libnss3-tools
+#6 [base 2/5] RUN apt update && apt -y install npm
+#6 0.420 /bin/sh: apt: not found
+#6 ERROR: process "/bin/sh -c apt update && apt -y install npm" did not complete successfully: exit code: 127
+------
+ > [base 2/5] RUN apt update && apt -y install npm:
+#6 0.420 /bin/sh: apt: not found
 
 
 FROM alpine:3.19-updated as base
