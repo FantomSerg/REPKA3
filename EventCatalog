@@ -1,9 +1,43 @@
+const path = require('path');
+
+module.exports = {
+  generators: [
+    [
+      '@eventcatalog/generator-asyncapi',
+      {
+        services: [
+          { 
+            path: "http://istio.serkalm.k8s.moskow.ru:8080/api/ecom-kafka-sergkalm-app/async-api/asyncapi-ui.html",
+            id: 'Ecom-Kafka-Service',
+            domain: {
+              id: 'kafka-domain',
+              name: 'Кафка-сервисы',
+              version: '2.1.0'
+            }
+          }
+        ]
+      }
+    ],
+    [
+      '@eventcatalog/generator-openapi',
+      {
+        services: [
+          {
+            path: "http://istio.serkalm.k8s.moskow.ru:8080/api/kafka-sergkalm-app/open-api/swagger-ui/index.html",
+            id: 'Kafka-REST-API',
+            domain: {
+              id: 'rest-domain',
+              name: 'REST-сервисы',
+              version: '1.4.0'
+            }
+          }
+        ]
+      }
+    ]
+  ]
+};
  
-
-Пример ссылки на наш AsyncAPI: http://istio.serkalm.k8s.moskow.ru:8080/api/ecom-kafka-sergkalm-app/async-api/asyncapi-ui.html
-
-Пример ссылки на наш OpenAPI: http://istio.serkalm.k8s.moskow.ru:8080/api/kafka-sergkalm-app/open-api/swagger-ui/index.html
-
+=====================================
 
 npx @eventcatalog/create-eventcatalog@latest .
 Для сборки Docker-образа EventCatalog с интеграцией Kubernetes-сервисов и поддержкой Swagger/AsyncAPI выполните следующие шаги:
