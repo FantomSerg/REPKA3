@@ -1,9 +1,17 @@
-#6 [base 2/5] RUN apt update && apt -y install npm
-#6 0.420 /bin/sh: apt: not found
-#6 ERROR: process "/bin/sh -c apt update && apt -y install npm" did not complete successfully: exit code: 127
-------
- > [base 2/5] RUN apt update && apt -y install npm:
-#6 0.420 /bin/sh: apt: not found
+Dockerfile:12
+--------------------
+  11 |     
+  12 | >>> RUN npm i -D --global \
+  13 | >>>     @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
+  14 | >>>     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+  15 | >>>     @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} \
+  16 | >>> 
+  17 | >>> RUN npm run build
+  18 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm i -D --global     @eventcatalog/create-catalog@${CREATECATALOG_VERSION}    
+@eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION}   
+@eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} RUN npm run build" did not complete successfully: exit code: 1
 
 
 FROM alpine:3.19-updated as base
