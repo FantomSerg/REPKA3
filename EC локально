@@ -1,0 +1,47 @@
+# Этап 1: Сборка проекта
+FROM node:20 AS build
+
+# Установите рабочую директорию
+WORKDIR /app
+
+# Установите переменные окружения для версий пакетов
+ENV CREATECATALOG_VERSION="2.2.7" \
+    GENERATORASYNCAPI_VERSION="3.0.5" \
+    GENERATOROPENAPI_VERSION="4.0.7"
+
+# Скопируйте package.json и package-lock.json
+COPY package*.json ./
+
+# Установите зависимости
+RUN npm install
+
+# Установите пакеты EventCatalog
+RUN npm install -g \
+    @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
+    @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+    @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION}
+
+# Скопируйте остальные файлы проекта
+COPY . .
+
+# Сгенерируйте документацию (если нужно)
+RUN npm run generate:openapi
+RUN npm run generate:asyncapi
+
+# Соберите проект
+RUN npm run build
+
+# Этап 2: Финальный образ
+FROM nginx:1.24.0
+
+# Скопируйте собранный проект из этапа build
+COPY --from=build /app/out /usr/share/nginx/html
+
+# Копируем конфигурацию Nginx (если нужно)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Откройте порт 80
+EXPOSE 80
+
+# Запустите nginx
+CMD ["nginx", "-g", "daemon off;"]
