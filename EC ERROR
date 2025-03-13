@@ -1,3 +1,19 @@
+ => ERROR [build 4/7] RUN npm install                                                                                                                                                       16.0s
+------
+ > [build 4/7] RUN npm install:
+0.912 npm error code ENOENT
+0.913 npm error syscall open
+0.914 npm error path /app/package.json
+0.914 npm error errno -2
+0.914 npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/app/package.json'
+0.915 npm error enoent This is related to npm not being able to find a file.
+0.915 npm error enoent
+
+
+
+
+
+
 sudo npx @eventcatalog/create-eventcatalog@latest my-catalog
 
 export PATH="/usr/local/nodejs/bin:$PATH"
