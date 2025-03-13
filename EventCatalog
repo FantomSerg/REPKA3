@@ -1,11 +1,26 @@
- > [base 5/5] RUN npm i -D --global     @eventcatalog/create-catalog@2.2.7     @eventcatalog/generator-openapi@4.0.7     @eventcatalog/generator-asyncapi@3.0.5 RUN npm run build:
-#9 1.122 npm ERR! code E403
-#9 1.123 npm ERR! 403 403 Forbidden - GET https://registry.npmjs.org/npm
-#9 1.124 npm ERR! 403 In most cases, you or one of your dependencies are requesting
-#9 1.124 npm ERR! 403 a package version that is forbidden by your security policy, or
-#9 1.124 npm ERR! 403 on a server you do not have access to.
-#9 1.125 
-#9 1.125 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-03-13T13_19_21_038Z-debug-0.log
+ > [base 5/5] RUN npm i -D --global     @eventcatalog/create-catalog@2.2.7     @eventcatalog/generator-openapi@4.0.7  
+@eventcatalog/generator-asyncapi@3.0.5 RUN npm run build:
+#9 1.192 npm ERR! code E403
+#9 1.193 npm ERR! 403 403 Forbidden - GET https://registry.npmjs.org/npm
+#9 1.193 npm ERR! 403 In most cases, you or one of your dependencies are requesting
+#9 1.194 npm ERR! 403 a package version that is forbidden by your security policy, or
+#9 1.194 npm ERR! 403 on a server you do not have access to.
+#9 1.196 
+#9 1.196 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-03-13T14_03_18_230Z-debug-0.log
+------
+Dockerfile:12
+--------------------
+  11 |     
+  12 | >>> RUN npm i -D --global \
+  13 | >>>     @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
+  14 | >>>     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+  15 | >>>     @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} \
+  16 | >>> 
+  17 | >>> RUN npm run build
+  18 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm i -D --global     @eventcatalog/create-catalog@${CREATECATALOG_VERSION}     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION}   
+@eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} RUN npm run build" did not complete successfully: exit code: 1
 ===========================================================================
 Dockerfile:12
 --------------------
