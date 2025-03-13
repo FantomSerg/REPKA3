@@ -1,12 +1,16 @@
-  19 |     # Установите пакеты EventCatalog
-  20 | >>> RUN npm install -g \
-  21 | >>>     @eventcatalog/create-catalog@${CREATECATALOG_VERSION} \
-  22 | >>>     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
-  23 | >>>     @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION}
-  24 |     
+ => ERROR [stage-1 2/3] COPY --from=build /app/out /usr/share/nginx/html                                                                                                                     0.0s
+------
+ > [stage-1 2/3] COPY --from=build /app/out /usr/share/nginx/html:
+------
+Dockerfile:38
 --------------------
-ERROR: failed to solve: process "/bin/sh -c npm install -g     @eventcatalog/create-catalog@${CREATECATALOG_VERSION}     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION}     @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION}" did not complete successfully: exit code: 1
-
+  36 |     
+  37 |     # Скопируйте собранный проект из этапа build
+  38 | >>> COPY --from=build /app/out /usr/share/nginx/html
+  39 |     
+  40 |     # Копируем конфигурацию Nginx (если нужно)
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 93f6b877-9c07-4460-967d-7977f7b219be::hu2rhfwohs9bazca7p2lo7m91: "/app/out": not found
 
 
 
