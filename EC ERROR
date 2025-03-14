@@ -1,3 +1,9 @@
+docker run -d -p 3000:3000 docker-local.unixrepo..ru/base/eventcatalog:0.0.10
+1f0b1b76c2140c2b3aaec3d410bcbd44cb75f7d08dc4afeab7b4a50fc1cbd351
+docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "eventcatalog": executable file not found in $PATH: unknown.
+
+
+
 # Этап 1: Билд Node.js окружения
 FROM node:20-alpine AS builder
 
