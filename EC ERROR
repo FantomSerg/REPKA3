@@ -1,21 +1,32 @@
-#9 [ 3/11] WORKDIR /home/eventcatalog
-#9 CACHED
-#10 [ 6/11] COPY /resources/.yarnrc /usr/local/share/.yarnrc
-#10 CACHED
-#11 [ 7/11] COPY . .
-#11 DONE 0.1s
-#12 [ 8/11] RUN npm install -D --global     @eventcatalog/create-catalog@2.2.7     @eventcatalog/generator-openapi4.0.7     @eventcatalog/generator-asyncapi{GENERATORASYNCAPI_VERSION}
-#12 0.869 npm ERR! code ENOENT
-#12 0.870 npm ERR! syscall open
-#12 0.870 npm ERR! path /home/eventcatalog/@eventcatalog/generator-asyncapi{GENERATORASYNCAPI_VERSION}/package.json
-#12 0.870 npm ERR! errno -2
-#12 0.872 npm ERR! enoent ENOENT: no such file or directory, open '/home/eventcatalog/@eventcatalog/generator-asyncapi{GENERATORASYNCAPI_VERSION}/package.json'
-#12 0.872 npm ERR! enoent This is related to npm not being able to find a file.
-#12 0.872 npm ERR! enoent 
-#12 0.874 
-#12 0.874 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-03-14T07_46_05_480Z-debug-0.log
-#12 ERROR: process "/bin/sh -c npm install -D --global     @eventcatalog/create-catalog@${CREATECATALOG_VERSION}     @eventcatalog/generator-openapi${GENERATOROPENAPI_VERSION}   
-@eventcatalog/generator-asyncapi{GENERATORASYNCAPI_VERSION}" did not complete successfully: exit code: 254
+# Этап 1: Билд Node.js окружения
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Устанавливаем EventCatalog и нужные плагины
+RUN npm install -g \
+    eventcatalog/create-catalog \
+    eventcatalog/generator-openapi \
+    eventcatalog/asyncapi
+
+# Этап 2: Финальный легковесный образ
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Копируем EventCatalog из builder-образа
+COPY --from=builder /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Устанавливаем рабочую директорию каталога (позже можно изменить)
+WORKDIR /eventcatalog
+
+# Открываем порт EventCatalog
+EXPOSE 3000
+
+# Команда по умолчанию
+CMD ["eventcatalog", "start"]
+
 
 
 
