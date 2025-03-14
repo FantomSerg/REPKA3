@@ -1,3 +1,7 @@
+ docker run -d -p 3000:3000 common-docker-local.ru/base/eventcatalog:0.0.10
+ae68982938c07929ac9318341619893853f0760fb5721a69578b0742ea0cec99
+docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "create-catalog": executable file not found in $PATH: unknown.
+
 #13 [ 9/10] RUN ls -lah /home/eventcatalog/node_modules/.bin/
 #13 0.277 total 16K    
 #13 0.277 drwxr-xr-x    2 root     root        4.0K Mar 14 13:28 .
