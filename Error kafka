@@ -30,7 +30,7 @@ RUN npm install --global yarn
 
 
 USER eventcatalog
-
+CMD ["eventcatalog", "build"]
 
 rules:
   # Метрики контроллера
