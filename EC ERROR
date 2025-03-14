@@ -1,55 +1,21 @@
-FROM alpine:3.19-updated as base
-
-# Переменные версий
-ENV CREATECATALOG_VERSION="2.2.7" \
-    GENERATORASYNCAPI_VERSION="3.0.5" \
-    GENERATOROPENAPI_VERSION="4.0.7" \
-    NODE_OPTIONS=--max_old_space_size=2048
-
-# Установка зависимостей
-RUN apk update && apk add --no-cache \
-    bash \
-    curl \
-    nodejs \
-    npm \
-    && adduser -u 777 -D -H -s /sbin/nologin eventcatalog
-
-# Устанавливаем рабочую директорию и копируем файлы конфигурации
-WORKDIR /home/eventcatalog
-
-COPY --chown=eventcatalog /resources/.npmrc /etc/npmrc
-COPY --chown=eventcatalog /resources/.npmrc /home/eventcatalog/.npmrc
-COPY /resources/.yarnrc /usr/local/share/.yarnrc
-
-# Устанавливаем пакеты локально в node_modules
-USER root
-RUN npm install --save \
-    @eventcatalog/create-eventcatalog@${CREATECATALOG_VERSION} \
-    @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
-    @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} \
-    yarn
-
-# Проверим, установились ли пакеты в node_modules
-RUN ls -lah /home/eventcatalog/node_modules/
-
-# Делаем eventcatalog исполняемым, если он установлен
-RUN chmod +x /home/eventcatalog/node_modules/.bin/eventcatalog || echo "eventcatalog не найден"
-
-# Добавляем node_modules/.bin в PATH
-ENV PATH="/home/eventcatalog/node_modules/.bin:$PATH"
-
-# Проверяем доступность eventcatalog
-RUN which eventcatalog
-RUN eventcatalog --version
-
-# Возвращаем пользователя
-USER eventcatalog
-
-# Открываем порт по умолчанию
-EXPOSE 3000
-
-# Запускаем EventCatalog
-CMD ["eventcatalog", "start"]
+#13 [ 9/12] RUN chmod +x /home/eventcatalog/node_modules/.bin/eventcatalog || echo "eventcatalog не найден"
+#13 0.278 chmod: /home/eventcatalog/node_modules/.bin/eventcatalog: No such file or directory
+#13 0.278 eventcatalog не найден
+#13 DONE 0.3s
+#14 [10/12] RUN which eventcatalog
+#14 ERROR: process "/bin/sh -c which eventcatalog" did not complete successfully: exit code: 1
+------
+ > [10/12] RUN which eventcatalog:
+------
+Dockerfile:39
+--------------------
+  37 |     ENV PATH="/home/eventcatalog/node_modules/.bin:$PATH"
+  38 |     
+  39 | >>> RUN which eventcatalog
+  40 |     RUN eventcatalog --version
+  41 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c which eventcatalog" did not complete successfully: exit code: 1
 
 
 
