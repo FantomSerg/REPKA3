@@ -1,34 +1,18 @@
-ENV PATH="/usr/local/lib/node_modules/.bin:$PATH"
+# Проверяем, что пакеты установились в /home/eventcatalog/node_modules
+RUN ls -lah /home/eventcatalog/node_modules/.bin/
 
+# Делаем eventcatalog исполняемым
+RUN chmod +x /home/eventcatalog/node_modules/.bin/eventcatalog
 
-# Этап 1: Билд Node.js окружения
-FROM node:20-alpine AS builder
+# Добавляем путь к бинарнику в PATH
+ENV PATH="/home/eventcatalog/node_modules/.bin:$PATH"
 
-WORKDIR /app
+# Проверяем доступность eventcatalog
+RUN which eventcatalog
+RUN eventcatalog --version
 
-# Устанавливаем EventCatalog и нужные плагины
-RUN npm install -g \
-    eventcatalog/create-catalog \
-    eventcatalog/generator-openapi \
-    eventcatalog/asyncapi
-
-# Этап 2: Финальный легковесный образ
-FROM node:20-alpine
-
-WORKDIR /app
-
-# Копируем EventCatalog из builder-образа
-COPY --from=builder /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=builder /usr/local/bin /usr/local/bin
-
-# Устанавливаем рабочую директорию каталога (позже можно изменить)
-WORKDIR /eventcatalog
-
-# Открываем порт EventCatalog
-EXPOSE 3000
-
-# Команда по умолчанию
-CMD ["eventcatalog", "start"]
+# Возвращаем пользователя
+USER eventcatalog
 
 
 
