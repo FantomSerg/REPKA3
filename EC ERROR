@@ -1,3 +1,8 @@
+
+RUN npm list --depth=0
+RUN ls -lah /home/eventcatalog/node_modules/
+RUN ls -lah /home/eventcatalog/node_modules/.bin/
+
 #13 [ 9/12] RUN chmod +x /home/eventcatalog/node_modules/.bin/eventcatalog || echo "eventcatalog не найден"
 #13 0.278 chmod: /home/eventcatalog/node_modules/.bin/eventcatalog: No such file or directory
 #13 0.278 eventcatalog не найден
