@@ -1,3 +1,11 @@
+#13 [ 9/10] RUN ls -lah /home/eventcatalog/node_modules/.bin/
+#13 0.277 total 16K    
+#13 0.277 drwxr-xr-x    2 root     root        4.0K Mar 14 13:28 .
+#13 0.277 drwxr-xr-x  294 root     root        8.0K Mar 14 13:28 ..
+#13 0.277 lrwxrwxrwx    1 root     root          22 Mar 14 13:28 astring -> ../astring/bin/astring
+#13 0.277 lrwxrwxrwx    1 root     root          25 Mar 14 13:28 changeset -> ../@changesets/cli/bin.js
+#13 0.277 lrwxrwxrwx    1 root     root          50 Mar 14 13:28 create-catalog -> ../@eventcatalog/create-eventcatalog/dist/index.js
+
 RUN ls -lah /home/eventcatalog/node_modules/.bin/
 
 
