@@ -1,4 +1,15 @@
- => ERROR [stage-1 2/3] COPY --from=build /app/out /usr/share/nginx/html                                                                                                                     0.0s
+RUN npx --global eventcatalog install-deps && npm install --global yarn
+RUN apt update && apk add bash npm curl git libnss3-tools
+RUN apk update && apk add --no-cache nodejs npm
+
+
+
+
+
+
+
+
+=> ERROR [stage-1 2/3] COPY --from=build /app/out /usr/share/nginx/html                                                                                                                     0.0s
 ------
  > [stage-1 2/3] COPY --from=build /app/out /usr/share/nginx/html:
 ------
