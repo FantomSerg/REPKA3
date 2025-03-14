@@ -1,4 +1,7 @@
- docker run -d -p 3000:3000 common-docker-local.ru/base/eventcatalog:0.0.10
+docker logs 9d71503749bf
+? What is your organization name?
+
+docker run -d -p 3000:3000 common-docker-local.ru/base/eventcatalog:0.0.10
 ae68982938c07929ac9318341619893853f0760fb5721a69578b0742ea0cec99
 docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "create-catalog": executable file not found in $PATH: unknown.
 
