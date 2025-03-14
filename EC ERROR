@@ -1,3 +1,6 @@
+RUN ls -lah /home/eventcatalog/node_modules/
+
+@eventcatalog
 
 RUN npm list --depth=0
 RUN ls -lah /home/eventcatalog/node_modules/
