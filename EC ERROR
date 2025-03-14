@@ -1,18 +1,19 @@
-# Проверяем, что пакеты установились в /home/eventcatalog/node_modules
-RUN ls -lah /home/eventcatalog/node_modules/.bin/
-
-# Делаем eventcatalog исполняемым
-RUN chmod +x /home/eventcatalog/node_modules/.bin/eventcatalog
-
-# Добавляем путь к бинарнику в PATH
-ENV PATH="/home/eventcatalog/node_modules/.bin:$PATH"
-
-# Проверяем доступность eventcatalog
-RUN which eventcatalog
-RUN eventcatalog --version
-
-# Возвращаем пользователя
-USER eventcatalog
+#13 [ 9/13] RUN ls -lah /home/eventcatalog/node_modules/.bin/
+#13 0.257 ls: /home/eventcatalog/node_modules/.bin/: No such file or directory
+#13 ERROR: process "/bin/sh -c ls -lah /home/eventcatalog/node_modules/.bin/" did not complete successfully: exit code: 1
+------
+ > [ 9/13] RUN ls -lah /home/eventcatalog/node_modules/.bin/:
+#13 0.257 ls: /home/eventcatalog/node_modules/.bin/: No such file or directory
+------
+Dockerfile:35
+--------------------
+  33 |     RUN npm install --global yarn
+  34 |     # Проверяем, что пакеты установились в /home/eventcatalog/node_modules
+  35 | >>> RUN ls -lah /home/eventcatalog/node_modules/.bin/
+  36 |     
+  37 |     # Делаем eventcatalog исполняемым
+--------------------
+ERROR: failed to solve: process "/bin/sh -c ls -lah /home/eventcatalog/node_modules/.bin/" did not complete successfully: exit code: 1
 
 
 
