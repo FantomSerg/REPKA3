@@ -1,5 +1,5 @@
 https://github.com/allure-framework/allurectl/
-
+https://github.com/allure-framework/allurectl/releases/download/2.16.0/allurectl_darwin_amd64
 
 docker logs 9d71503749bf
 ? What is your organization name?
