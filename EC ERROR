@@ -1,8 +1,4 @@
-npm error code 1
-npm error path /cicd/npm/node_modules/onnxruntime-node
-npm error command failed
-npm error command sh -c node ./script/install
-npm error Downloading "https://github.com/microsoft/onnxruntime/releases/download/v1.20.1/onnxruntime-linux-x64-gpu-1.20.1.tgz
+https://github.com/allure-framework/allurectl/
 
 
 docker logs 9d71503749bf
