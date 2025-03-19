@@ -1,3 +1,9 @@
+#5 0.549 + mv -f /tmp/-subca0223.crt /tmp/-subca0224.crt /tmp/-subca0225.crt /etc/pki/ca-trust/source/anchors/
+#5 0.549 mv: can't rename '/tmp/-subca0223.crt': No such file or directory
+#5 0.549 mv: can't rename '/tmp/-subca0224.crt': No such file or directory
+#5 0.549 mv: can't rename '/tmp/-subca0225.crt': No such file or directory
+
+
 sdk:8.0.406-alpine3.21-amd6
 
 **Что такое топик в Kafka?**
