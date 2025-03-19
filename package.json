@@ -1,3 +1,11 @@
+npm run start
+
+> eventcatalog@0.1.0 start
+> eventcatalog start
+
+sh: eventcatalog: not found
+
+
 {
   "name": "my-event-catalog",
   "version": "0.1.0",
