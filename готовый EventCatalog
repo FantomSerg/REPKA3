@@ -27,3 +27,17 @@ EXPOSE 3000
 
 # Запускаем приложение
 CMD ["npm", "run", "dev"]
+
+
+create-eventcatalog.exp 
+#!/usr/bin/expect -f
+set timeout -1
+spawn npx @eventcatalog/create-eventcatalog@3.0.0
+expect "Ok to proceed?"
+send "y\r"
+expect "What is your project named?"
+send "my-event-catalog\r"
+expect "What is your organization name?"
+send "EventCatalog Ltd\r"
+expect eof
+
