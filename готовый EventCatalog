@@ -1,3 +1,5 @@
+COPY /resources/create-eventcatalog.exp /app/create-eventcatalog.exp
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git expect && \
     npm install -g npm@latest && \
