@@ -1,4 +1,7 @@
-COPY /resources/create-eventcatalog.exp /app/create-eventcatalog.exp
+#12 ERROR: process "/bin/sh -c chmod +x /app/create-eventcatalog.exp && /app/create-eventcatalog.exp" did not complete successfully: exit code: 127
+------
+ > [ 8/10] RUN chmod +x /app/create-eventcatalog.exp && /app/create-eventcatalog.exp:
+#12 0.304 /bin/sh: 1: /app/create-eventcatalog.exp: not found
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git expect && \
