@@ -1,0 +1,29 @@
+FROM node:latest AS build
+
+# Устанавливаем необходимые утилиты
+RUN apt-get update && apt-get install -y --no-install-recommends git expect && \
+    npm install -g npm@latest && \
+    rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем expect-скрипт внутрь контейнера
+COPY create-eventcatalog.exp /app/create-eventcatalog.exp
+
+# Делаем скрипт исполняемым и запускаем его
+RUN chmod +x /app/create-eventcatalog.exp && /app/create-eventcatalog.exp
+
+# Переходим в созданную директорию
+WORKDIR /app/my-event-catalog
+
+# Устанавливаем плагины
+RUN npm install @eventcatalog/generator-asyncapi @eventcatalog/generator-openapi
+
+RUN sed -i '/strict-peer-dependencies/d' /app/my-event-catalog/.npmrc || true
+
+# Открываем порт
+EXPOSE 3000
+
+# Запускаем приложение
+CMD ["npm", "run", "dev"]
