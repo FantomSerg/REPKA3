@@ -37,6 +37,17 @@ EXPOSE 3000
 # Запускаем приложение
 CMD ["npm", "run", "dev"]
 
+# Этап 2: Рантайм
+FROM httpd:2.4 AS runtime
+
+# Копируем сгенерированные файлы из этапа сборки в директорию для статичных файлов Apache
+COPY --from=build /app/my-event-catalog/dist /usr/local/apache2/htdocs/
+
+# Открываем порт 80 для доступа
+EXPOSE 80
+
+# Запускаем HTTP сервер
+CMD ["httpd-foreground"]
 
 create-eventcatalog.exp 
 #!/usr/bin/expect -f
