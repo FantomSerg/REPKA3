@@ -1,6 +1,7 @@
-#2 WARN: Empty continuation line found in: RUN npm install -- global     @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION}     @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION} RUN sed -i '/strict-peer-dependencies/d' /app/my-event-catalog/.npmrc || true
-#2 DONE 0.0s
-ERROR: failed to solve: target stage base could not be found
+RUN apt update && apt -y install bash npm curl git expect libnss3-tools \
+    && mkdir -p /app \
+    && adduser -D -u 777 eventcatalog \
+    && chown -R 777 /app \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git expect && \
