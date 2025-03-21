@@ -1,0 +1,37 @@
+FROM node:latest AS build
+
+# Устанавливаем необходимые утилиты
+RUN apt-get update && apt-get install -y --no-install-recommends git expect && \
+    npm install -g npm@latest && \
+    rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем expect-скрипт внутрь контейнера
+COPY create-eventcatalog.exp /app/create-eventcatalog.exp
+
+# Делаем скрипт исполняемым и запускаем его
+RUN chmod +x /app/create-eventcatalog.exp && /app/create-eventcatalog.exp
+
+# Переходим в созданную директорию
+WORKDIR /app/my-event-catalog
+
+# Устанавливаем плагины
+RUN npm install @eventcatalog/generator-asyncapi @eventcatalog/generator-openapi
+
+RUN sed -i '/strict-peer-dependencies/d' /app/my-event-catalog/.npmrc || true
+# Сборка проекта
+RUN npm run build
+
+# Этап 2: Рантайм
+FROM httpd:2.4 AS runtime
+
+# Копируем сгенерированные файлы из этапа сборки в директорию для статичных файлов Apache
+COPY --from=build /app/my-event-catalog/dist /usr/local/apache2/htdocs/
+
+# Открываем порт 80 для доступа
+EXPOSE 80
+
+# Запускаем HTTP сервер
+CMD ["httpd-foreground"]
