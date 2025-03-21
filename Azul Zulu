@@ -1,7 +1,16 @@
-#5 0.549 + mv -f /tmp/-subca0223.crt /tmp/-subca0224.crt /tmp/-subca0225.crt /etc/pki/ca-trust/source/anchors/
-#5 0.549 mv: can't rename '/tmp/-subca0223.crt': No such file or directory
-#5 0.549 mv: can't rename '/tmp/-subca0224.crt': No such file or directory
-#5 0.549 mv: can't rename '/tmp/-subca0225.crt': No such file or directory
+unitTests: preCheck auth
+	DOCKER_CONFIG=/home/jenkins/.docker mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
+	org.jacoco:jacoco-maven-plugin:report --settings ${LANG_PATH}/product/buildpack/settings.xml \
+	-Drepo.username=${USER} -Drepo.password=${PASSWORD} \
+	-Dmaven.repo.local=${LANG_PATH}/dependency/ dependency:copy-dependencies \
+	-DoutputDirectory=${LANG_PATH}/target/classes \
+	-Dsonar.coverage.jacoco.xmlReportPaths=${LANG_PATH}/target/site/jacoco/jacoco.xml \
+	--batch-mode -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
+	allurectl upload --endpoint https://allure.com/ \
+    --token ${TOKEN} \
+    --project-id 311 \
+    --launch-name "${LANG_PATH}/target/site/jacoco/jacoco.xml"
+
 
 
 sdk:8.0.406-alpine3.21-amd6
