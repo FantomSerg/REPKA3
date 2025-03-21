@@ -1,3 +1,32 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    # Оптимизация кеширования статических файлов
+    location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg|mp4|webm|ogg|mp3|wav|flac|aac)$ {
+        expires 6M;
+        access_log off;
+        add_header Cache-Control "public, max-age=15552000, immutable";
+    }
+
+    # Gzip-сжатие
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+}
+
+
+
+
+
+
+
 RUN apt update && apt -y install bash npm curl git expect libnss3-tools \
     && mkdir -p /app \
     && adduser -D -u 777 eventcatalog \
