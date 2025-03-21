@@ -1,3 +1,6 @@
+allurectl upload --endpoint https://allure-nexign.com/ --token **** --project-id 311 --launch-name Testtttt \/data/jenkins/volume/workspace/middle/orion/motion/motion-api/ci-job/target/site/jacoco/jacoco.xml
+Unable to parse command line options: Unrecognized option: --endpoint
+
 unitTests: preCheck auth
 	DOCKER_CONFIG=/home/jenkins/.docker mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
 	org.jacoco:jacoco-maven-plugin:report --settings ${LANG_PATH}/product/buildpack/settings.xml \
