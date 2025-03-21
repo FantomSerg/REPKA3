@@ -1,5 +1,50 @@
+FROM node:22-alpine as base
+ENV CREATECATALOG_VERSION="2.2.7" \
+    GENERATORASYNCAPI_VERSION="3.0.5" \
+    GENERATOROPENAPI_VERSION="4.0.7" \
+    NODE_OPTIONS=--max_old_space_size=2048
+
+RUN apk update && apk add --no-cache bash npm curl git expect \
+    && mkdir -p /app \
+    && adduser -D -u 777 eventcatalog \
+    && chown -R 777 /app \
+
+USER 777
+
+COPY --chown=eventcatalog /resources/.npmrc /etc/npmrc
+COPY --chown=eventcatalog /resources/.npmrc /home/eventcatalog/.npmrc
+COPY /resources/.yarnrc /usr/local/share/.yarnrc
+
+RUN cd /app && echo "BestEcom" | npx @eventcatalog/create-eventcatalog@2.2.7 eventcatalog \
+    && cd /app/eventcatalog && npm run build
+
+WORKDIR /app/eventcatalog
+
+RUN npm install -- global \
+    @eventcatalog/generator-openapi@${GENERATOROPENAPI_VERSION} \
+    @eventcatalog/generator-asyncapi@${GENERATORASYNCAPI_VERSION}
+
+RUN sed -i '/strict-peer-dependencies/d' /app/eventcatalog/.npmrc || true
+
+WORKDIR /app/eventcatalog
+
+EXPOSE 3000
+
 CMD ["npm", "run", "start", "--host", "0.0.0.0"]
 
+FROM nginx:1.24.0 as runtime
+RUN apk update && apk --no-cache upgrade \
+    && apk --no-cache add curl bash nginx nginx-mod-http-image-filter  nginx-mod-http-brotli nginx-mod-http-keyval \
+    nginx-mod-http-cache-purge nginx-mod-http-cookie-flag nginx-mod-http-encrypted-session 
+
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=base /app/eventcatalog/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
 
 
 server {
