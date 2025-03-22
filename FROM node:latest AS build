@@ -23,6 +23,11 @@ RUN npm install @eventcatalog/generator-asyncapi @eventcatalog/generator-openapi
 RUN sed -i '/strict-peer-dependencies/d' /app/my-event-catalog/.npmrc || true
 # Сборка проекта
 RUN npm run build
+# Открываем порт
+EXPOSE 3000
+
+# Запускаем приложение
+CMD ["npm", "run", "dev"]
 
 # Этап 2: Рантайм
 FROM httpd:2.4 AS runtime
