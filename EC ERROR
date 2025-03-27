@@ -1,5 +1,4 @@
-https://github.com/allure-framework/allurectl/
-https://github.com/allure-framework/allurectl/releases/download/2.16.0/allurectl_darwin_amd64
+- scp -i $PRIVATE_KEY $CI_PROJECT_DIR/eventcatalog/ $SERVER_IP:$SOCKET_DIRECTORY/
 
 docker logs 9d71503749bf
 ? What is your organization name?
