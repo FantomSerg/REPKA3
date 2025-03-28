@@ -1,3 +1,7 @@
+remote: Resolving deltas: 100% (36/36), completed with 1 local object.
+remote: GitLab: Author 'user@ms-appt.serg.ru' is not a member of team
+
+
 To https://cicd-git.ru/store/infrastructure/test/eventcatalog.git
  ! [remote rejected] master -> master (pre-receive hook declined)
 error: failed to push some refs to 
