@@ -1,3 +1,9 @@
+To https://cicd-git.ru/store/infrastructure/test/eventcatalog.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 
+
+
+
 - scp -i $PRIVATE_KEY $CI_PROJECT_DIR/eventcatalog/ $SERVER_IP:$SOCKET_DIRECTORY/
 
 docker logs 9d71503749bf
