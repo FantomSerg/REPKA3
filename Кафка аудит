@@ -1,0 +1,8 @@
+      
+      # Настройки аудита
+      KAFKA_AUTHORIZER_CLASS_NAME: "org.apache.kafka.metadata.authorizer.StandardAuthorizer"
+      KAFKA_SUPER_USERS: "User:admin"  # Список суперпользователей через ;
+      KAFKA_AUTHORIZER_AUDIT_ENABLE: "true"
+      KAFKA_AUTHORIZER_AUDIT_LOG_DIR: "/var/log/kafka/audit"
+    volumes:
+      - ./audit-logs:/var/log/kafka/audit  # Маунтим директорию для логов
