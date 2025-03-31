@@ -1,3 +1,7 @@
+Loading authorizer snapshot at offset 1199382 (kafka.server.metadata.AclPublisher)
+
+
+
 FROM alpine:3.19-updated as base
 ENV CREATECATALOG_VERSION="2.2.7" \
     GENERATORASYNCAPI_VERSION="3.0.5" \
